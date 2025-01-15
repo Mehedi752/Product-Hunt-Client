@@ -5,7 +5,7 @@ import logoImg from "../assets/logo1.png";
 const Navbar = () => {
 
     const { user, signOutUser } = useAuth();
-
+    console.log(user);
     const handleLogout = () => {
         signOutUser();
     }
@@ -16,10 +16,8 @@ const Navbar = () => {
             <div className="navbar container mx-auto flex items-center justify-between py-4">
 
                 <div className="flex items-center gap-2">
-                    <Link to="/" className="btn btn-ghost normal-case text-xl">
                         <img src={logoImg} alt="Logo" className="w-10 h-10 mr-2" />
-                        <h3 className="text-white">Product Hunt</h3>
-                    </Link>
+                        <h3 className="text-white text-2xl hidden lg:block">Product Hunt</h3>
                 </div>
 
                 <div className="flex items-center gap-2">

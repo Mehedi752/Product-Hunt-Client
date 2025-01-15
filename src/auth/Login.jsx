@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 
 const Login = () => {
     const navigate = useNavigate();
-    const { setUser, signInWithGoogle } = useAuth();
+    const { setUser, signInWithGoogle, signInUser } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -15,7 +15,15 @@ const Login = () => {
         const { email, password } = data;
         console.log(data);
 
-
+        signInUser(email, password)
+            .then((res) => {
+                console.log(res);
+                setUser(res.user);
+                navigate(location.state ? location.state : '/');
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
 
@@ -34,7 +42,7 @@ const Login = () => {
     return (
         <div className="bg-base-200">
             <div className="flex items-center justify-center container mx-auto py-[72px] px-6 lg:px-[350px]">
-                <div className="w-full p-8 space-y-4 bg-white rounded shadow-lg">
+                <div className="w-full p-12 space-y-4 bg-white rounded shadow-lg">
                     <h1 className="text-2xl font-bold text-center">Login</h1>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -75,14 +83,14 @@ const Login = () => {
                                 letter, one lowercase letter, one number and one special character</p>}
 
                         </div>
-                        
+
                         <button type="submit" className="btn text-white bg-gradient-to-r from-blue-600 to-indigo-600 w-full">
                             Login
                         </button>
                     </form>
 
                     <div className="divider">OR</div>
-                    <button className="btn btn-outline w-full flex items-center"
+                    <button onClick={handleGoogleSignIn} className="btn btn-outline w-full flex items-center"
                     >
                         <FaGoogle className="text-blue-700"></FaGoogle>
                         Sign in with Google

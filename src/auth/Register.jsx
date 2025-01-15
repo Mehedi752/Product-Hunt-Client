@@ -23,7 +23,7 @@ const Register = () => {
             .then((res) => {
                 console.log(res);
                 setUser(res.user);
-                updateProfileUser(name, photoURL )
+                updateProfileUser({ displayName: name, photoURL: photoURL })
                     .then(() => {
                         Swal.fire({
                             icon: 'success',
