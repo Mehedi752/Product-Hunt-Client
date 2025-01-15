@@ -20,7 +20,7 @@ const Navbar = () => {
                         <h3 className="text-white text-2xl hidden lg:block">Product Hunt</h3>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 lg:w-[30%]">
                     <ul className="menu menu-horizontal px-1 text-base text-white">
                         <li>
                             <Link to="/">Home</Link>
@@ -64,7 +64,7 @@ const Navbar = () => {
                             >
                                 {/* User Name */}
                                 <li className="text-sm font-semibold text-gray-100">
-                                    <span className="block px-4 py-2 rounded-md bg-gray-600">
+                                    <span className="block px-4 py-2 rounded-md bg-gray-700">
                                         {user.displayName || "User"}
                                     </span>
                                 </li>

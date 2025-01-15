@@ -1,10 +1,11 @@
 import React from 'react';
+import Banner from './Banner';
 
 const Home = () => {
     return (
         <div>
-            <h3 className="text-center text-3xl my-12">Welcome to the 12th Assignment</h3>
-            
+            <Banner></Banner>
+
         </div>
     );
 };

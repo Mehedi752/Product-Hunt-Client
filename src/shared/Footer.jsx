@@ -7,9 +7,9 @@ const Footer = () => {
     return (
         <div>
             <footer className="bg-gray-900 text-white py-10">
-                <div className="container mx-auto flex justify-between">
+                <div className="container mx-auto px-6 lg:px-0 flex flex-col lg:flex-row gap-6 lg:justify-between">
                     {/* Logo and Description */}
-                    <div className='w-1/3'>
+                    <div className='lg:w-1/3'>
                         <div className="flex items-center space-x-2 mb-4">
                             <img src={logoImg} alt="Logo" className="w-10 h-10" />
                             <h2 className="text-2xl font-semibold">Product Hunt</h2>
@@ -20,7 +20,7 @@ const Footer = () => {
                     </div>
 
                     {/* Contact Information */}
-                    <div>
+                    <div className='lg:w-1/3'>
                         <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
                         <ul className="text-gray-400 space-y-2">
                             <li className="flex items-center space-x-2">
@@ -33,7 +33,7 @@ const Footer = () => {
                             </li>
                             <li className="flex items-center space-x-2">
                                 <HiOutlineMail className="text-xl" />
-                                <span>support@yourwebsite.com</span>
+                                <span>support@productHunt.com</span>
                             </li>
                         </ul>
                     </div>
