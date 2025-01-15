@@ -12,8 +12,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="bg-gradient-to-r from-blue-500 to-indigo-600
-">
+        <div className="bg-gradient-to-r from-blue-500 to-indigo-600">
             <div className="navbar container mx-auto flex items-center justify-between py-4">
 
                 <div className="flex items-center gap-2">

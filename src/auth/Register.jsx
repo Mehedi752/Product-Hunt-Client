@@ -43,7 +43,7 @@ const Register = () => {
 
     return (
         <div className="bg-base-200">
-            <div className="container mx-auto py-[72px] px-6 lg:px-[300px] ">
+            <div className="container mx-auto py-[72px] px-6 lg:px-[350px] ">
                 <div className="p-12 bg-white rounded shadow-lg">
                     <h1 className="text-2xl font-bold text-center">Register</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -118,7 +118,7 @@ const Register = () => {
                             </p>
                         }
 
-                        <button type="submit" className="btn btn-primary w-full mb-4">
+                        <button type="submit" className="btn bg-gradient-to-r from-blue-600 to-indigo-600 text-white w-full mb-4">
                             Register
                         </button>
                     </form>
