@@ -3,13 +3,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Login = () => {
     const navigate = useNavigate();
-    const { setUser, signInWithGoogle, signInUser } = useAuth();
+    const { setUser, signInWithGoogle, signInUser, loading, setLoading } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const axiosPublic = useAxiosPublic();
 
     const onSubmit = async (data) => {
         const { email, password } = data;
@@ -19,10 +21,12 @@ const Login = () => {
             .then((res) => {
                 console.log(res);
                 setUser(res.user);
+                setLoading(false);
                 navigate(location.state ? location.state : '/');
             })
             .catch((error) => {
                 console.log(error);
+                setLoading(false);
             })
     }
 
@@ -32,6 +36,21 @@ const Login = () => {
         signInWithGoogle()
             .then((res) => {
                 setUser(res.user);
+                const userInfo = {
+                    name: res.user.displayName,
+                    email: res.user.email,
+                    photoURL: res.user.photoURL,
+                    role: 'user'
+                }
+
+                axiosPublic.post('/users', userInfo)
+                    .then((res) => {
+                        console.log(res);
+                        if (res.data.insertedId) {
+                            console.log('User registered successfully');
+                        }
+                    })
+
                 navigate(location.state ? location.state : '/');
             })
             .catch((error) => {

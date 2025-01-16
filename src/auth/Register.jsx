@@ -4,6 +4,7 @@ import useAuth from "../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 const Register = () => {
@@ -13,6 +14,7 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const location = useLocation();
+    const axiosPublic = useAxiosPublic();
 
     const onSubmit = async (data) => {
         const { name, email, password, photoURL } = data;
@@ -25,6 +27,23 @@ const Register = () => {
                 setUser(res.user);
                 updateProfileUser({ displayName: name, photoURL: photoURL })
                     .then(() => {
+
+                        const userInfo = {
+                            name,
+                            email,
+                            photoURL,
+                            role: 'user'
+                        }
+
+                        axiosPublic.post('/users', userInfo)
+                            .then((res) => {
+                                console.log(res);
+                                if (res.data.insertedId) {
+                                    console.log('User registered successfully');
+                                }
+                            })
+
+
                         Swal.fire({
                             icon: 'success',
                             title: 'Registered Successfully',
