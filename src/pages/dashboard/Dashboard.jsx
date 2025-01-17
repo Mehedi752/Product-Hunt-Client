@@ -9,7 +9,7 @@ import PrivateRoute from '../../provider/PrivateRoute';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
     const [currentUser, setCurrentUser] = useState(user);
     const axiosPublic = useAxiosPublic();
 
@@ -26,11 +26,17 @@ const Dashboard = () => {
     }, [user?.email, axiosPublic]);
 
     if (currentUser?.role)
-        currentUser.role = "admin";
+        currentUser.role = "moderator";
 
     console.log(user)
     console.log(currentUser)
     console.log(currentUser?.role)
+
+    if (loading) {
+        return <div className="flex justify-center items-center"><span className="loading loading-spinner loading-lg text-info min-h-screen"></span></div>;
+    }
+
+
 
     return (
         <div className="container mx-auto p-5">

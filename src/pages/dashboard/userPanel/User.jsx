@@ -14,7 +14,7 @@ const User= () => {
                     <ul className="space-y-2">
                         <li>
                             <NavLink
-                                to="profile"
+                                to="/dashboard/user/profile"
                                 className={({ isActive }) =>
                                     `flex items-center px-4 py-2 text-gray-700 ${isActive ? "bg-blue-100 text-blue-600" : "hover:bg-gray-200"
                                     } rounded-lg`
@@ -26,7 +26,7 @@ const User= () => {
                         </li>
                         <li>
                             <NavLink
-                                to="add-product"
+                                to="/dashboard/user/addProduct"
                                 className={({ isActive }) =>
                                     `flex items-center px-4 py-2 text-gray-700 ${isActive ? "bg-blue-100 text-blue-600" : "hover:bg-gray-200"
                                     } rounded-lg`
@@ -38,7 +38,7 @@ const User= () => {
                         </li>
                         <li>
                             <NavLink
-                                to="my-products"
+                                to="/dashboard/user/myProducts"
                                 className={({ isActive }) =>
                                     `flex items-center px-4 py-2 text-gray-700 ${isActive ? "bg-blue-100 text-blue-600" : "hover:bg-gray-200"
                                     } rounded-lg`

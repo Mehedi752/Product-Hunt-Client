@@ -12,6 +12,13 @@ import User from "../pages/dashboard/userPanel/user";
 import PrivateRoute from "../provider/PrivateRoute";
 import Admin from "../pages/dashboard/adminPanel/Admin";
 import Moderator from "../pages/dashboard/moderatorPanel/Moderator";
+import Profile from "../pages/dashboard/userPanel/Profile";
+import AddProduct from "../pages/dashboard/userPanel/AddProducts";
+import MyProducts from "../pages/dashboard/userPanel/MyProducts";
+import UpdateProduct from "../pages/dashboard/userPanel/UpdateProduct";
+import Products from "../pages/products/Products";
+import ProductReviewQueue from "../pages/dashboard/moderatorPanel/ProductReviewQueue";
+import ProductDetails from "../components/ProductDetails";
 
 
 
@@ -34,6 +41,14 @@ const router = createBrowserRouter([
                 element: <Login></Login>
             },
             {
+                path: '/products',
+                element: <Products></Products>
+            },
+            {
+                path: '/productDetails/:id',
+                element: <ProductDetails></ProductDetails>
+            },
+            {
                 path: '/dashboard',
                 element: <Dashboard></Dashboard>,
                 children: [
@@ -52,7 +67,33 @@ const router = createBrowserRouter([
                     {
                         path: '/dashboard/admin/users',
                         element: <PrivateRoute><Users></Users></PrivateRoute>
+                    },
+
+                    //Normal User Routes.
+                    {
+                        path: '/dashboard/user/profile',
+                        element: <PrivateRoute><Profile></Profile></PrivateRoute>
+                    },
+                    {
+                        path: '/dashboard/user/addProduct',
+                        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
+                    },
+                    {
+                        path: '/dashboard/user/myProducts',
+                        element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>
+                    },
+                    {
+                        path: '/dashboard/user/updateProduct/:id',
+                        element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>
+                    },
+
+                    //Moderator Routes.
+                    {
+                        path: '/dashboard/moderator/reviewQueue',
+                        element: <PrivateRoute><ProductReviewQueue></ProductReviewQueue></PrivateRoute>
                     }
+
+
                 ]
             },
 

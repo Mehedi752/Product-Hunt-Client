@@ -10,6 +10,7 @@ const Users = () => {
     const axiosPublic = useAxiosPublic();
     const [loading, setLoading] = useState(true);
 
+
     // Fetch users from API or database
     useEffect(() => {
         const fetchUsers = async () => {
@@ -21,14 +22,11 @@ const Users = () => {
                 console.error('Error fetching users:', error);
                 setLoading(false);
             }
-        };
 
+        };
         fetchUsers();
     }, []);
 
-    if (loading) {
-        return <div className="flex justify-center items-center"><span className="loading loading-spinner loading-lg text-info min-h-screen"></span></div>;
-    }
 
 
     // Handlers for updating roles

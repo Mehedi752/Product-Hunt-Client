@@ -14,7 +14,7 @@ const Moderator = () => {
                     <ul className="space-y-2">
                         <li>
                             <NavLink
-                                to="review-queue"
+                                to="/dashboard/moderator/reviewQueue"
                                 className={({ isActive }) =>
                                     `flex items-center px-4 py-2 text-gray-700 ${isActive ? "bg-green-100 text-green-600" : "hover:bg-gray-200"
                                     } rounded-lg`
