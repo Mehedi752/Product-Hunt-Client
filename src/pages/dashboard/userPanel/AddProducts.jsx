@@ -42,6 +42,7 @@ const AddProduct = () => {
             tags: tags.map(tag => tag.text),
             timestamp: new Date(), // Save current timestamp
             status: 'pending', // Set status to pending by default
+            upvotes: 0, // Set upvotes to 0 by default
         };
 
         //Save product data to the database

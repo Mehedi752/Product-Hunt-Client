@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import useAuth from '../hooks/useAuth';
 import useAxiosPublic from '../hooks/useAxiosPublic';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -12,20 +13,19 @@ const ProductDetails = () => {
     const [reviewData, setReviewData] = useState({ description: '', rating: '' });
 
     // Fetch product details
-    const { data: product, isLoading } = useQuery({
+    const { data: product, isLoading, refetch } = useQuery({
         queryKey: ['product', id],
         queryFn: async () => {
             const res = await axiosPublic.get(`/products/id/${id}`);
             return res.data;
         },
     });
-    console.log(product);
 
     // Fetch reviews for the product
     const { data: reviews = [], refetch: refetchReviews } = useQuery({
         queryKey: ['reviews', id],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/reviews/product/${id}`);
+            const res = await axiosPublic.get(`/reviews/${id}`);
             return res.data;
         },
     });
@@ -42,6 +42,7 @@ const ProductDetails = () => {
                     timer: 2000,
                     showConfirmButton: false,
                 });
+                refetch();
             }
         } catch (error) {
             console.error('Error upvoting product:', error);
@@ -79,7 +80,7 @@ const ProductDetails = () => {
 
         try {
             const response = await axiosPublic.post('/reviews', reviewPayload);
-            if (response.data.acknowledged) {
+            if (response.data.insertedId) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Review Submitted!',
@@ -100,28 +101,38 @@ const ProductDetails = () => {
     }
 
     return (
-        <div className="container mx-auto px-6 py-8">
+        <div className="container mx-auto px-4 py-8">
             {/* Product Details Section */}
-            <div className="bg-white shadow-lg rounded-lg p-6 mb-8">
-                <div className="flex items-center gap-4 mb-6">
-                    <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-10 h-10 object-cover rounded-md"
-                    />
-                    <h1 className="text-3xl font-bold">{product.name}</h1>
+            <div className="bg-gradient-to-r from-white to-gray-50 shadow-md rounded-lg p-8 mb-12">
+                <div className="flex justify-between items-center mb-6">
+                    <div className="flex items-center gap-4">
+                        <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-16 h-16 object-cover rounded-lg"
+                        />
+                        <h1 className="text-4xl font-extrabold text-gray-800">{product.name}</h1>
+                    </div>
+                    <a
+                        href={product.externalLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold border px-3 py-2 rounded-lg transition duration-200"
+                    >
+                        Visit <FaExternalLinkAlt />
+                    </a>
                 </div>
-                <p className="text-gray-700 mb-4">{product.description}</p>
-                <div className="flex flex-wrap gap-4">
+                <p className="text-gray-600 text-lg mb-6">{product.description}</p>
+                <div className="flex gap-4">
                     <button
                         onClick={handleUpvote}
-                        className="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white"
+                        className="btn btn-primary text-white px-5 py-2 rounded-lg shadow-lg hover:bg-blue-700"
                     >
                         Upvote ({product.upvotes})
                     </button>
                     <button
                         onClick={handleReport}
-                        className="btn btn-sm bg-red-500 hover:bg-red-600 text-white"
+                        className="btn btn-danger text-white px-5 py-2 rounded-lg shadow-lg bg-red-700"
                     >
                         Report
                     </button>
@@ -129,24 +140,28 @@ const ProductDetails = () => {
             </div>
 
             {/* Reviews Section */}
-            <div className="bg-gray-50 shadow rounded-lg p-6 mb-8">
-                <h2 className="text-2xl font-bold mb-4">Reviews</h2>
+            <div className="bg-white shadow-md rounded-lg p-8 mb-12">
+                <h2 className="text-3xl font-bold text-gray-800 mb-6">Reviews</h2>
                 {reviews.length > 0 ? (
-                    <div className="grid gap-4">
+                    <div className="space-y-6">
                         {reviews.map((review) => (
                             <div
                                 key={review._id}
-                                className="p-4 bg-white shadow rounded-md flex items-start gap-4"
+                                className="p-6 bg-gray-100 rounded-lg shadow-sm flex gap-4"
                             >
                                 <img
                                     src={review.reviewerImage}
                                     alt={review.reviewerName}
-                                    className="w-12 h-12 rounded-full object-cover"
+                                    className="w-14 h-14 rounded-full object-cover"
                                 />
                                 <div>
-                                    <h3 className="font-bold">{review.reviewerName}</h3>
-                                    <p className="text-gray-600 text-sm">{review.description}</p>
-                                    <p className="text-yellow-500 font-bold">
+                                    <h3 className="text-lg font-bold text-gray-700">
+                                        {review.reviewerName}
+                                    </h3>
+                                    <p className="text-gray-600 text-sm mb-2">
+                                        {review.description}
+                                    </p>
+                                    <p className="text-yellow-500 font-semibold">
                                         Rating: {review.rating} / 5
                                     </p>
                                 </div>
@@ -159,21 +174,21 @@ const ProductDetails = () => {
             </div>
 
             {/* Post Review Section */}
-            <div className="bg-white shadow-lg rounded-lg p-6">
-                <h2 className="text-2xl font-bold mb-4">Post a Review</h2>
-                <form onSubmit={handleReviewSubmit} className="grid gap-4">
+            <div className="bg-gray-50 shadow-md rounded-lg p-8">
+                <h2 className="text-3xl font-bold text-gray-800 mb-6">Post a Review</h2>
+                <form onSubmit={handleReviewSubmit} className="space-y-4">
                     <input
                         type="text"
                         value={user?.displayName || ''}
                         readOnly
-                        className="input input-bordered w-full bg-gray-100"
+                        className="input input-bordered w-full bg-gray-100 border-gray-300"
                         placeholder="Reviewer Name"
                     />
                     <input
                         type="text"
                         value={user?.photoURL || ''}
                         readOnly
-                        className="input input-bordered w-full bg-gray-100"
+                        className="input input-bordered w-full bg-gray-100 border-gray-300"
                         placeholder="Reviewer Image URL"
                     />
                     <textarea
@@ -182,7 +197,7 @@ const ProductDetails = () => {
                             setReviewData({ ...reviewData, description: e.target.value })
                         }
                         placeholder="Write your review here..."
-                        className="textarea textarea-bordered w-full"
+                        className="textarea textarea-bordered w-full bg-white border-gray-300"
                         required
                     ></textarea>
                     <input
@@ -192,14 +207,14 @@ const ProductDetails = () => {
                             setReviewData({ ...reviewData, rating: e.target.value })
                         }
                         placeholder="Rating (1-5)"
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full bg-white border-gray-300"
                         required
                         min="1"
                         max="5"
                     />
                     <button
                         type="submit"
-                        className="btn bg-green-500 hover:bg-green-600 text-white"
+                        className="btn bg-green-500 text-white px-5 py-2 rounded-lg shadow-lg hover:bg-green-600"
                     >
                         Submit Review
                     </button>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import axios from 'axios';
 
 const ProductReviewQueue = () => {
     const navigate = useNavigate();
@@ -36,10 +37,14 @@ const ProductReviewQueue = () => {
         }
     };
 
+
     // Mark product as featured
-    const makeFeatured = async (id) => {
+    const makeFeatured = async (product) => {
         try {
-            const response = await axiosPublic.patch(`/products/id/${id}`, { featured: true });
+            const response = await axiosPublic.patch(`/products/id/${product._id}`, { featured: true });
+            axiosPublic.post(`/products/featured`, product);
+
+
             if (response.data.modifiedCount > 0) {
                 Swal.fire({
                     icon: 'success',
@@ -88,23 +93,21 @@ const ProductReviewQueue = () => {
                                             View Details
                                         </button>
                                         <button
-                                            onClick={() => makeFeatured(product._id)}
-                                            className={`px-4 py-2 text-sm font-medium rounded-md ${
-                                                product.featured
-                                                    ? 'bg-green-300 text-white cursor-not-allowed'
-                                                    : 'bg-green-600 text-white hover:bg-green-700'
-                                            } transition`}
+                                            onClick={() => makeFeatured(product)}
+                                            className={`px-4 py-2 text-sm font-medium rounded-md ${product.featured
+                                                ? 'bg-green-300 text-white cursor-not-allowed'
+                                                : 'bg-green-600 text-white hover:bg-green-700'
+                                                } transition`}
                                             disabled={product.featured}
                                         >
                                             {product.featured ? 'Featured' : 'Make Featured'}
                                         </button>
                                         <button
                                             onClick={() => updateStatus(product._id, 'accepted')}
-                                            className={`px-4 py-2 text-sm font-medium rounded-md ${
-                                                product.status === 'accepted'
-                                                    ? 'bg-gray-300 text-white cursor-not-allowed'
-                                                    : 'bg-blue-600 text-white hover:bg-blue-700'
-                                            } transition`}
+                                            className={`px-4 py-2 text-sm font-medium rounded-md ${product.status === 'accepted'
+                                                ? 'bg-gray-300 text-white cursor-not-allowed'
+                                                : 'bg-blue-600 text-white hover:bg-blue-700'
+                                                } transition`}
                                             disabled={product.status === 'accepted'}
                                         >
                                             {product.status === 'accepted'
@@ -113,11 +116,10 @@ const ProductReviewQueue = () => {
                                         </button>
                                         <button
                                             onClick={() => updateStatus(product._id, 'rejected')}
-                                            className={`px-4 py-2 text-sm font-medium rounded-md ${
-                                                product.status === 'rejected'
-                                                    ? 'bg-gray-300 text-white cursor-not-allowed'
-                                                    : 'bg-red-600 text-white hover:bg-red-700'
-                                            } transition`}
+                                            className={`px-4 py-2 text-sm font-medium rounded-md ${product.status === 'rejected'
+                                                ? 'bg-gray-300 text-white cursor-not-allowed'
+                                                : 'bg-red-600 text-white hover:bg-red-700'
+                                                } transition`}
                                             disabled={product.status === 'rejected'}
                                         >
                                             {product.status === 'rejected'
