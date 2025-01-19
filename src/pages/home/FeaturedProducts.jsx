@@ -72,7 +72,7 @@ const FeaturedProducts = () => {
                         />
                         <div className="p-6">
                             <h3
-                                onClick={() => navigate(`/product/${product._id}`)}
+                                onClick={() => navigate(`/productDetails/${product._id}`)}
                                 className="text-2xl font-semibold text-blue-600 cursor-pointer hover:underline transition-colors"
                             >
                                 {product.name}
