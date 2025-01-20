@@ -39,7 +39,7 @@ const Admin = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="manage-coupons"
+                                to="/dashboard/admin/coupons"
                                 className={({ isActive }) =>
                                     `flex items-center px-4 py-3 text-gray-700 ${
                                         isActive ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-200'

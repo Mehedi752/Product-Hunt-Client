@@ -21,6 +21,7 @@ import ProductReviewQueue from "../pages/dashboard/moderatorPanel/ProductReviewQ
 import ProductDetails from "../components/ProductDetails";
 import ReportedContents from "../pages/dashboard/moderatorPanel/ReportedContents";
 import Statistics from "../pages/dashboard/adminPanel/Statistics";
+import Coupons from "../pages/dashboard/adminPanel/Coupons";
 
 
 
@@ -68,7 +69,10 @@ const router = createBrowserRouter([
                         path: '/dashboard/admin/statistics',
                         element: <PrivateRoute><Statistics></Statistics></PrivateRoute>
                     },
-
+                    {
+                        path: '/dashboard/admin/coupons',
+                        element: <PrivateRoute><Coupons></Coupons></PrivateRoute>
+                    },
                     //Moderator Routes.
                     {
                         path: "/dashboard/moderator",
