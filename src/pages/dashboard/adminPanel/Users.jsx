@@ -1,59 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import { use } from 'react';
-import { FiUser, FiMail, FiUserCheck, FiShield } from 'react-icons/fi';
+import { FiUserCheck, FiShield } from 'react-icons/fi';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
-import { FaUsers } from 'react-icons/fa';
-import { MdDelete } from 'react-icons/md';
+import { useQuery } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
+
 
 const Users = () => {
-    const [users, setUsers] = useState([]);
     const axiosPublic = useAxiosPublic();
-    const [loading, setLoading] = useState(true);
+
 
 
     // Fetch users from API or database
-    useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const response = await axiosPublic.get('/users');
-                setUsers(response.data);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching users:', error);
-                setLoading(false);
-            }
-
-        };
-        fetchUsers();
-    }, []);
+    const { data: users = [], refetch } = useQuery({
+        queryKey: ["users"],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/users');
+            return res.data;
+        },
+    });
+    console.log(users);
 
 
 
     // Handlers for updating roles
-    const handleMakeAdmin = (userId) => {
-        // fetch(`/api/users/${userId}/make-admin`, { method: 'PUT' })
-        //     .then((res) => res.json())
-        //     .then(() => {
-        //         setUsers((prev) =>
-        //             prev.map((user) =>
-        //                 user.id === userId ? { ...user, role: 'Admin' } : user
-        //             )
-        //         );
-        //         alert('User has been made Admin.');
-        //     });
+    const handleMakeAdmin = (user) => {
+
+        axiosPublic.put(`/users/makeAdmin/${user._id}`)
+            .then((res) => {
+                console.log(res);
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: `User ${user.name} is now an Admin.`,
+                        timer: 2000,
+                        showConfirmButton: false,
+                    });
+                }
+                refetch();
+            })
+            .catch((err) => {
+                console.error('Error making user Admin:', err);
+            });
     };
 
-    const handleMakeModerator = (userId) => {
-        // fetch(`/api/users/${userId}/make-moderator`, { method: 'PUT' })
-        //     .then((res) => res.json())
-        //     .then(() => {
-        //         setUsers((prev) =>
-        //             prev.map((user) =>
-        //                 user.id === userId ? { ...user, role: 'Moderator' } : user
-        //             )
-        //         );
-        //         alert('User has been made Moderator.');
-        //     });
+    console.log(users);
+
+    const handleMakeModerator = (user) => {
+        axiosPublic.put(`/users/makeModerator/${user._id}`)
+            .then((res) => {
+                console.log(res);
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: `User ${user.name} is now a Moderator.`,
+                        timer: 2000,
+                        showConfirmButton: false,
+                    });
+                }
+                refetch();
+            })
+            .catch((err) => {
+                console.error('Error making user Moderator:', err);
+            });
     };
 
     return (
@@ -94,28 +103,30 @@ const Users = () => {
 
                                 <td className="px-4 py-2 text-center">
                                     <span
-                                        className={`px-2 py-1  text-sm font-medium ${user.role === 'Admin'
+                                        className={`px-2 py-1  text-sm font-medium ${user.role === 'admin'
                                             ? 'bg-blue-100 text-blue-600'
-                                            : user.role === 'Moderator'
+                                            : user.role === 'moderator'
                                                 ? 'bg-green-100 text-green-600'
-                                                : 'bg-gray-100 text-gray-600'
+                                                : 'bg-gray-300 text-gray-800'
                                             }`}
                                     >
-                                        {user.role || 'User'}
+                                        {user.role || 'user'}
                                     </span>
                                 </td>
 
                                 <td className="lg:px-4 py-2 text-center flex flex-col lg:flex-row items-center gap-2">
                                     <button
-                                        onClick={() => handleMakeModerator(user._id)}
+                                        onClick={() => handleMakeModerator(user)}
                                         className="btn btn-sm btn-info"
+                                        disabled={user.role === 'moderator'}
                                     >
                                         <FiUserCheck className="lg:inline-block mr-1 hidden" />
                                         Make Moderator
                                     </button>
                                     <button
-                                        onClick={() => handleMakeAdmin(user._id)}
+                                        onClick={() => handleMakeAdmin(user)}
                                         className="btn btn-sm btn-primary"
+                                        disabled={user.role === 'admin'}
                                     >
                                         <FiShield className="lg:inline-block mr-1 hidden " />
                                         Make Admin

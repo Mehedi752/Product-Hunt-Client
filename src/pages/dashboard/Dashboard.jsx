@@ -23,8 +23,6 @@ const Dashboard = () => {
         }
     }, [user?.email, axiosPublic]);
 
-    if (currentUser?.role)
-        currentUser.role = "admin";
 
     console.log(user)
     console.log(currentUser)

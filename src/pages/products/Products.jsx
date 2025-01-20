@@ -123,7 +123,7 @@ const AcceptedProducts = () => {
                                         {/* View Details */}
                                         <Link
                                             to={`/productDetails/${product._id}`}
-                                            className="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-sm transition-colors"
+                                            className="text-white btn btn-primary px-4 py-2 rounded-lg text-sm transition-colors"
                                         >
                                             View Details
                                         </Link>
@@ -131,10 +131,11 @@ const AcceptedProducts = () => {
                                         {/* Upvote Button */}
                                         <button
                                             onClick={() => handleUpvote(product._id)}
-                                            className="flex items-center justify-center py-2 px-4 rounded-lg text-white font-semibold transition-colors
-                                                                      bg-blue-600 hover:bg-blue-700"
+                                            disabled={user?.email === product.ownerEmail}
+                                            className={`mt-4 btn btn-primary py-2 px-4 rounded-xl text-white font-semibold transition-all duration-300`}
                                         >
-                                            <FaArrowUp className="mr-2 text-lg" /> Upvote ({product.upvotes})
+                                            <FaArrowUp className="inline-block mr-2 text-lg" />
+                                            Upvote ({product.upvotes})
                                         </button>
                                     </div>
                                 </div>
