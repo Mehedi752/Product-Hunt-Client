@@ -24,13 +24,6 @@ const FeaturedProducts = () => {
     // Handle upvote functionality
     const handleUpvote = async (productId) => {
         if (!user) {
-            Swal.error({
-                icon: "error",
-                title: "Not Logged In",
-                text: "You must be logged in to upvote products.",
-                timer: 2000,
-                showConfirmButton: false,
-            })
             navigate("/auth/login");
             return;
         }
