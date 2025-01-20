@@ -64,7 +64,7 @@ const Navbar = () => {
                             >
                                 {/* User Name */}
                                 <li className="text-sm font-semibold text-gray-100">
-                                    <span className="block px-4 py-2 rounded-md bg-gray-700">
+                                    <span className="block px-4 py-2 rounded-md bg-gray-700 hover:bg-gray-800">
                                         {user.displayName || "User"}
                                     </span>
                                 </li>

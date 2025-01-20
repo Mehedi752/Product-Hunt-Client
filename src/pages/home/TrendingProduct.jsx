@@ -1,13 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
-import { BiSolidUpvote } from 'react-icons/bi';
+import useAuth from '../../hooks/useAuth';
+import { FaArrowUp } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const TrendingProducts = () => {
     const axiosPublic = useAxiosPublic();
+    const { user } = useAuth();
+    const navigate = useNavigate();
 
-    const { data: trendingProducts = [], isLoading,refetch } = useQuery({
+    const { data: trendingProducts = [], refetch } = useQuery({
         queryKey: ["trendingProducts"],
         queryFn: async () => {
             const res = await axiosPublic.get('/products/trending/topSix');
@@ -15,50 +18,90 @@ const TrendingProducts = () => {
         },
     });
 
+    // Handle upvote functionality
+    const handleUpvote = async (productId) => {
+        if (!user) {
+            navigate("/auth/login");
+            return;
+        }
+
+        try {
+            const response = await axiosPublic.patch(`/products/upvote/${productId}`);
+            if (response.data.modifiedCount > 0) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Upvoted!',
+                    text: 'You have successfully upvoted this product.',
+                    timer: 2000,
+                    showConfirmButton: false,
+                });
+                refetch();
+            }
+        } catch (error) {
+            console.error("Error upvoting product:", error);
+        }
+    };
+
+    const handleDetails = (id) => {
+        if (!user) {
+            navigate('/auth/login');
+            return;
+        }
+        navigate(`/productDetails/${id}`);
+    };
+
     return (
-        <div className="container mx-auto px-4 py-12">
-            <h2 className="text-4xl font-semibold text-center text-gray-800 mb-8">Trending Products</h2>
+        <div className="container mx-auto px-4 py-16">
+            <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">Trending Products</h2>
 
-            {/* Products Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10">
+            {/* Product Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
                 {trendingProducts.map((product) => (
-                    <div key={product._id} className="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden group hover:scale-105 transition-transform duration-300">
-                        {/* Image */}
-                        <img
-                            src={product.image}
-                            alt={product.name}
-                            className="w-full p-6 rounded-lg h-64 object-cover mb-4 group-hover:opacity-90 transition-opacity duration-300"
-                        />
-
-                        {/* Product Info */}
-                        <div className="p-6">
-                            <h3 className="text-xl font-semibold text-gray-900 mb-2">{product.name}</h3>
-                            <p className="text-sm text-gray-500 mb-4">{product.description}</p>
-
-                            <div className="flex justify-between items-center">
-                                {/* Tags */}
-                                <span className="text-xs text-gray-400">{product.tags.join(', ')}</span>
-
-                                {/* Upvote Button */}
-                                <button
-                                    className="bg-blue-500 text-white py-1 px-4 rounded-full hover:bg-blue-600 transition-colors duration-300"
-                                    disabled={product.owner === 'currentUserId'} // Disable if the user is the product owner
-                                >
-                                    <span className="flex items-center">
-                                        <BiSolidUpvote />
-                                        {product.upvotes}
-                                    </span>
-                                </button>
-                            </div>
+                    <div onClick={() => handleDetails(product._id)} key={product._id}
+                        className="group relative bg-white border border-gray-300 rounded-2xl shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105">
+                        {/* Product Image */}
+                        <div className="flex items-center gap-3 px-6 pt-6">
+                            <img
+                                src={product.image}
+                                alt={product.name}
+                                className="w-12 h-12 rounded-xl"
+                            />
+                            <h3 className="text-2xl font-semibold text-gray-900">{product.name}</h3>
                         </div>
+
+                        {/* Product Information */}
+                        <div className="p-6 space-y-4">
+
+                            <p className="text-sm text-gray-600">{product.description}</p>
+
+                            {/* Tags */}
+                            <div className="text-xs text-gray-500">
+                                {product.tags.map((tag, idx) => (
+                                    <span key={idx} className="inline-block mr-2 mb-2 px-3 py-1 rounded-full bg-teal-100 text-teal-700">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+
+                            {/* Upvote Button */}
+                            <button
+                                onClick={() => handleUpvote(product._id)}
+                                disabled={user?.email === product.ownerEmail}
+                                className={`mt-4 btn btn-primary py-2 px-4 rounded-xl text-white font-semibold transition-all duration-300`}
+                            >
+                                <FaArrowUp className="inline-block mr-2 text-lg" />
+                                Upvote ({product.upvotes})
+                            </button>
+                        </div>
+
                     </div>
                 ))}
             </div>
 
             {/* Show All Button */}
-            <div className="mt-8 text-center">
+            <div className="mt-12 text-center">
                 <Link to="/products">
-                    <button className="bg-green-500 text-white py-3 px-10 rounded-full hover:bg-green-600 transition-colors duration-300">
+                    <button className="bg-green-500 text-white py-3 px-12 rounded-full text-lg hover:bg-green-600 transition-colors duration-300">
                         Show All Products
                     </button>
                 </Link>

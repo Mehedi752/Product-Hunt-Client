@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useProducts from '../../../hooks/useProducts';
 import Swal from 'sweetalert2';
 
 const MyProducts = () => {
-    const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
     const [products, refetch] = useProducts();
-    console.log(products);
+    // console.log(products);
 
     // Handle delete post
     const handleDelete = (id) => {
@@ -41,6 +38,7 @@ const MyProducts = () => {
 
     // Handle update post
     const handleUpdate = (id) => {
+        console.log(id);
         navigate(`/dashboard/user/updateProduct/${id}`); // Redirect to the update page
     };
 
@@ -64,7 +62,7 @@ const MyProducts = () => {
                                 <tr key={product._id} className="hover:bg-gray-50 border-b">
                                     <td className="px-4 py-4">{index + 1}</td>
                                     <td className="px-4 py-4">{product.name}</td>
-                                    <td className="px-4 py-4">{product.votes || 0}</td>
+                                    <td className="px-4 py-4">{product.upvotes || 0}</td>
                                     <td
                                         className={`px-4 py-4 font-semibold ${product.status === 'Accepted' ? 'text-green-600' :
                                             product.status === 'Rejected' ? 'text-red-600' : 'text-yellow-500'

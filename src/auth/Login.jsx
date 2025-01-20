@@ -7,7 +7,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Login = () => {
     const navigate = useNavigate();
-    const { setUser, signInWithGoogle, signInUser, loading, setLoading } = useAuth();
+    const { setUser, signInWithGoogle, signInUser, setLoading } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -60,7 +60,7 @@ const Login = () => {
 
     return (
         <div className="bg-base-200">
-            <div className="flex items-center justify-center container mx-auto py-[72px] px-6 lg:px-[350px]">
+            <div className="flex items-center justify-center container mx-auto py-[72px] px-6 lg:px-[450px]">
                 <div className="w-full p-12 space-y-4 bg-white rounded shadow-lg">
                     <h1 className="text-2xl font-bold text-center">Login</h1>
 

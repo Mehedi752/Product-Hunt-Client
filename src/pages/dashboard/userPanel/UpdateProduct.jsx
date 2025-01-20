@@ -1,27 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLoaderData } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
-import { useQuery } from '@tanstack/react-query';
-import useAuth from '../../../hooks/useAuth';
 
 const UpdateProduct = () => {
     const { id } = useParams();
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const { register, handleSubmit, setValue, formState: { errors } } = useForm();
-    const { user } = useAuth();
-    // const [loading, setLoading] = useState(true);
 
-    //Fetch data using TanStack Query.
-    const { data: product = [], refetch } = useQuery({
-        queryKey: ['product', user?._id],
-        queryFn: async () => {
-            const res = await axiosPublic.get(`/products/id/${id}`);
-            return res.data;
-        }
-    })
+
+    const product = useLoaderData();
     console.log(product);
 
     // Handle form submission
@@ -37,7 +26,6 @@ const UpdateProduct = () => {
                         showConfirmButton: false
                     })
                 }
-                refetch(); // Refetch products
                 navigate('/dashboard/user/myProducts'); // Redirect back to My Products page
             })
             .catch((error) => {
@@ -46,14 +34,11 @@ const UpdateProduct = () => {
             });
     };
 
-    // if (loading) {
-    //     return <p>Loading...</p>; // Optional: Add a spinner or skeleton loader
-    // }
 
     return (
-        <div className="container mx-auto p-6">
+        <div className="container mx-auto p-10">
             <h1 className="text-2xl font-bold text-center mb-6">Update Product</h1>
-            <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md p-6 rounded-lg max-w-lg mx-auto">
+            <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md p-10 rounded-lg max-w-lg mx-auto">
                 {/* Product Name */}
                 <div className="mb-4">
                     <label htmlFor="name" className="block font-medium mb-1">Product Name</label>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
@@ -12,7 +12,7 @@ const FeaturedProducts = () => {
     const navigate = useNavigate();
 
     // Fetch featured products sorted by timestamp
-    const { data: featuredProducts = [], isLoading, refetch } = useQuery({
+    const { data: featuredProducts = [], refetch } = useQuery({
         queryKey: ["featuredProducts"],
         queryFn: async () => {
             const res = await axiosPublic.get('/products/featured');
@@ -45,12 +45,9 @@ const FeaturedProducts = () => {
         }
     };
 
-    if (isLoading) {
-        return <div className="text-center py-10">Loading...</div>;
-    }
 
     return (
-        <div className="container mx-auto px-6 py-8">
+        <div className="container mx-auto px-6 my-12">
             <h2 className="text-4xl font-extrabold mb-8 text-gray-800 text-center">Featured Products</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 {featuredProducts.map((product) => (
@@ -82,12 +79,8 @@ const FeaturedProducts = () => {
                             </div>
                             <button
                                 onClick={() => handleUpvote(product._id)}
-                                disabled={user?.email === product.owner}
-                                className={`mt-6 flex items-center justify-center w-full py-2 px-4 rounded-lg text-white font-semibold transition-colors
-                                    ${user?.email === product.owner
-                                        ? "bg-gray-300 cursor-not-allowed"
-                                        : "bg-blue-600 hover:bg-blue-700"
-                                    }`}
+                                disabled={user?.email === product.ownerEmail}
+                                className={`mt-6 btn btn-primary flex items-center justify-center w-full py-2 px-4 rounded-lg text-white font-semibold transition-colors`}
                             >
                                 <FaArrowUp className="mr-2 text-lg" /> Upvote ({product.upvotes})
                             </button>

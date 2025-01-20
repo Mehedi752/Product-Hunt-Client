@@ -94,11 +94,11 @@ const AcceptedProducts = () => {
                                 <img
                                     src={product.image}
                                     alt={product.name}
-                                    className="w-full h-48 object-cover rounded-lg px-6 pt-6"
+                                    className="w-full h-48 object-cover rounded-xl px-6 pt-6"
                                 />
 
                                 {/* Product Details */}
-                                <div className="p-4">
+                                <div className="p-6">
                                     <h2 className="text-xl font-bold text-gray-800 mb-2 line-clamp-1">
                                         {product.name}
                                     </h2>

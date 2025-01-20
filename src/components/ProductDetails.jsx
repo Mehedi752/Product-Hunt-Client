@@ -1,16 +1,17 @@
 import React, { useContext, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import useAuth from '../hooks/useAuth';
 import useAxiosPublic from '../hooks/useAxiosPublic';
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import { FaArrowUp, FaExternalLinkAlt } from 'react-icons/fa';
 
 const ProductDetails = () => {
     const { id } = useParams();
     const axiosPublic = useAxiosPublic();
     const { user } = useAuth();
     const [reviewData, setReviewData] = useState({ description: '', rating: '' });
+    const navigate = useNavigate();
 
     // Fetch product details
     const { data: product, isLoading, refetch } = useQuery({
@@ -31,9 +32,30 @@ const ProductDetails = () => {
     });
 
     // Handle Upvote
-    const handleUpvote = async () => {
+    const handleUpvote = async (productId) => {
+        if (!user) {
+            navigate("/auth/login");
+            return;
+        }
+
         try {
-            const response = await axiosPublic.patch(`/products/upvote/${id}`);
+            // Check if the user has already voted for this product (optional)
+            const isAlreadyVoted = product.voters?.includes(user.email);  // Assuming `user.email` is the unique identifier
+
+            if (isAlreadyVoted) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'You already voted!',
+                    text: 'You can only vote once for a product.',
+                    timer: 2000,
+                    showConfirmButton: false,
+                });
+                return;
+            }
+
+            // Proceed with the upvote
+            const response = await axiosPublic.patch(`/products/upvote/${productId}`);
+
             if (response.data.modifiedCount > 0) {
                 Swal.fire({
                     icon: 'success',
@@ -42,12 +64,21 @@ const ProductDetails = () => {
                     timer: 2000,
                     showConfirmButton: false,
                 });
-                refetch();
+                refetch();  // Refetch data to show the updated upvote count
             }
-        } catch (error) {
-            console.error('Error upvoting product:', error);
+        }
+        catch (error) {
+            console.error("Error upvoting product:", error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'Something went wrong while upvoting. Please try again.',
+                timer: 2000,
+                showConfirmButton: false,
+            });
         }
     };
+
 
     // Handle Report
     const handleReport = async () => {
@@ -125,10 +156,11 @@ const ProductDetails = () => {
                 <p className="text-gray-600 text-lg mb-6">{product.description}</p>
                 <div className="flex gap-4">
                     <button
-                        onClick={handleUpvote}
-                        className="btn btn-primary text-white px-5 py-2 rounded-lg shadow-lg hover:bg-blue-700"
+                        onClick={() => handleUpvote(product._id)}
+                        disabled={user?.email === product.ownerEmail}
+                        className={`btn btn-primary flex items-center justify-center rounded-lg text-white font-semibold transition-colors`}
                     >
-                        Upvote ({product.upvotes})
+                        <FaArrowUp className="mr-2 text-lg" /> Upvote ({product.upvotes})
                     </button>
                     <button
                         onClick={handleReport}

@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import Admin from './adminPanel/Admin';
-import User from './userPanel/user';
 import Moderator from './moderatorPanel/Moderator';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
-import axios from 'axios';
-import PrivateRoute from '../../provider/PrivateRoute';
-import { Link } from 'react-router-dom';
+import User from './userPanel/User';
+
 
 const Dashboard = () => {
     const { user, loading } = useAuth();
@@ -26,7 +24,7 @@ const Dashboard = () => {
     }, [user?.email, axiosPublic]);
 
     if (currentUser?.role)
-        currentUser.role = "moderator";
+        currentUser.role = "admin";
 
     console.log(user)
     console.log(currentUser)

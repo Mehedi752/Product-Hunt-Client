@@ -43,6 +43,7 @@ const AddProduct = () => {
             timestamp: new Date(), // Save current timestamp
             status: 'pending', // Set status to pending by default
             upvotes: 0, // Set upvotes to 0 by default
+            voters: [], // Set voters to empty array by default
         };
 
         //Save product data to the database
