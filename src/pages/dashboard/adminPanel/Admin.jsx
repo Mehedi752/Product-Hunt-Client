@@ -13,7 +13,7 @@ const Admin = () => {
                     <ul>
                         <li>
                             <NavLink
-                                to="statistics"
+                                to="/dashboard/admin/statistics"
                                 className={({ isActive }) =>
                                     `flex items-center px-4 py-3 text-gray-700 ${
                                         isActive ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-200'
@@ -56,9 +56,6 @@ const Admin = () => {
 
             {/* Main Content */}
             <main className="flex-1 p-8">
-                <div className="bg-white p-6 shadow rounded-lg">
-                    <h2 className="text-2xl font-bold text-gray-700">Admin Dashboard</h2>
-                </div>
                 <div className="mt-6">
                     <Outlet />
                 </div>

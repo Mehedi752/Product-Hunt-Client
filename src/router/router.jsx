@@ -20,6 +20,7 @@ import Products from "../pages/products/Products";
 import ProductReviewQueue from "../pages/dashboard/moderatorPanel/ProductReviewQueue";
 import ProductDetails from "../components/ProductDetails";
 import ReportedContents from "../pages/dashboard/moderatorPanel/ReportedContents";
+import Statistics from "../pages/dashboard/adminPanel/Statistics";
 
 
 
@@ -53,24 +54,40 @@ const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <Dashboard></Dashboard>,
                 children: [
+
+                    //Admin Routes.
                     {
                         path: "/dashboard/admin",
                         element: <PrivateRoute><Admin /></PrivateRoute>,
                     },
                     {
+                        path: '/dashboard/admin/users',
+                        element: <PrivateRoute><Users></Users></PrivateRoute>
+                    },
+                    {
+                        path: '/dashboard/admin/statistics',
+                        element: <PrivateRoute><Statistics></Statistics></PrivateRoute>
+                    },
+
+                    //Moderator Routes.
+                    {
                         path: "/dashboard/moderator",
                         element: <PrivateRoute><Moderator /></PrivateRoute>,  // Protect Moderator route with PrivateRoute
                     },
                     {
-                        path: "/dashboard/user",
-                        element: <PrivateRoute><User /></PrivateRoute>,  // Protect User route with PrivateRoute
+                        path: '/dashboard/moderator/reviewQueue',
+                        element: <PrivateRoute><ProductReviewQueue></ProductReviewQueue></PrivateRoute>
                     },
                     {
-                        path: '/dashboard/admin/users',
-                        element: <PrivateRoute><Users></Users></PrivateRoute>
+                        path: '/dashboard/moderator/reportedContents',
+                        element: <PrivateRoute><ReportedContents></ReportedContents></PrivateRoute>
                     },
 
                     //Normal User Routes.
+                    {
+                        path: "/dashboard/user",
+                        element: <PrivateRoute><User /></PrivateRoute>,  // Protect User route with PrivateRoute
+                    },
                     {
                         path: '/dashboard/user/profile',
                         element: <PrivateRoute><Profile></Profile></PrivateRoute>
@@ -89,15 +106,6 @@ const router = createBrowserRouter([
                         element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>
                     },
 
-                    //Moderator Routes.
-                    {
-                        path: '/dashboard/moderator/reviewQueue',
-                        element: <PrivateRoute><ProductReviewQueue></ProductReviewQueue></PrivateRoute>
-                    },
-                    {
-                        path: '/dashboard/moderator/reportedContents',
-                        element: <PrivateRoute><ReportedContents></ReportedContents></PrivateRoute>
-                    }
 
 
                 ]
