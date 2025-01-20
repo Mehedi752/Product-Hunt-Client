@@ -26,7 +26,7 @@ const Moderator = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="reported-contents"
+                                to="/dashboard/moderator/reportedContents"
                                 className={({ isActive }) =>
                                     `flex items-center px-4 py-2 text-gray-700 ${isActive ? "bg-green-100 text-green-600" : "hover:bg-gray-200"
                                     } rounded-lg`

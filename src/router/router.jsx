@@ -19,6 +19,7 @@ import UpdateProduct from "../pages/dashboard/userPanel/UpdateProduct";
 import Products from "../pages/products/Products";
 import ProductReviewQueue from "../pages/dashboard/moderatorPanel/ProductReviewQueue";
 import ProductDetails from "../components/ProductDetails";
+import ReportedContents from "../pages/dashboard/moderatorPanel/ReportedContents";
 
 
 
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/productDetails/:id',
-                element: <ProductDetails></ProductDetails>
+                element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>
             },
             {
                 path: '/dashboard',
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
                     {
                         path: '/dashboard/moderator/reviewQueue',
                         element: <PrivateRoute><ProductReviewQueue></ProductReviewQueue></PrivateRoute>
+                    },
+                    {
+                        path: '/dashboard/moderator/reportedContents',
+                        element: <PrivateRoute><ReportedContents></ReportedContents></PrivateRoute>
                     }
 
 
