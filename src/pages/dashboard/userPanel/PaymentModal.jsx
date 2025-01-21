@@ -35,7 +35,8 @@ const PaymentModal = ({ onClose }) => {
             const discountedPrice = price - (price * coupon.discountAmount) / 100;
             setCouponPrice(discountedPrice.toFixed(2)); // Update discounted price
             setError(''); // Clear any previous error
-        } else {
+        } 
+        else {
             setCouponPrice(null); // Reset discounted price
             setError('Invalid Coupon Code! Please enter the correct code.'); // Show error
         }

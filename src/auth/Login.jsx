@@ -43,6 +43,7 @@ const Login = () => {
                     role: 'user',
                     isSubscribed: false,
                     productAddCount: 0, // Set productAdd to 0 by default
+                    voteAddCount: 0, // Set voteAdd to 0 by default
                 }
 
                 axiosPublic.post('/users', userInfo)

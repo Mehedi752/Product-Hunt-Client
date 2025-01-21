@@ -31,6 +31,7 @@ const ProductDetails = () => {
         },
     });
 
+
     // Handle Upvote
     const handleUpvote = async (productId) => {
         if (!user) {
@@ -39,22 +40,8 @@ const ProductDetails = () => {
         }
 
         try {
-            // Check if the user has already voted for this product (optional)
-            const isAlreadyVoted = product.voters?.includes(user.email);  // Assuming `user.email` is the unique identifier
-
-            if (isAlreadyVoted) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'You already voted!',
-                    text: 'You can only vote once for a product.',
-                    timer: 2000,
-                    showConfirmButton: false,
-                });
-                return;
-            }
-
             // Proceed with the upvote
-            const response = await axiosPublic.patch(`/products/upvote/${productId}`);
+            const response = await axiosPublic.patch(`/products/upvote/${productId}`)
 
             if (response.data.modifiedCount > 0) {
                 Swal.fire({
@@ -64,7 +51,8 @@ const ProductDetails = () => {
                     timer: 2000,
                     showConfirmButton: false,
                 });
-                refetch();  // Refetch data to show the updated upvote count
+                refetch();
+
             }
         }
         catch (error) {
