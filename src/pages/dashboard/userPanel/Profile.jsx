@@ -1,51 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import PaymentModal from './PaymentModal';
+import { useQuery } from '@tanstack/react-query';
 
 const Profile = () => {
     const { user } = useAuth(); // Fetch authenticated user
-    const [currentUser, setCurrentUser] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
     const axiosPublic = useAxiosPublic();
-    const navigate = useNavigate();
 
-    useEffect(() => {
-        // Fetch user details, including subscription status
-        axiosPublic.get(`/users/${user?.email}`)
-            .then((res) => {
-                setCurrentUser(res.data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                console.error(err);
-                setLoading(false);
-            });
-    }, [user?.email, axiosPublic]);
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+    //Fecth user data from the server using Tanstack's useQuery hook
+    const { data: currentUser = [], refetch } = useQuery({
+        queryKey: ['currentUser', user?.email],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/users/${user?.email}`);
+            return res.data;
+        },
+    });
 
     const handleSubscribe = () => {
-        // Show modal or redirect to payment page
         setShowModal(true);
     };
 
-    const handleSubscriptionSuccess = () => {
-        // Update user's subscription status on success
-        // axiosPublic.put(`/users/${user?.email}/subscribe`, { status: 'Verified' })
-        //     .then(() => {
-        //         toast.success('Subscription successful!');
-        //         setCurrentUser((prev) => ({ ...prev, isSubscribed: true }));
-        //         setShowModal(false);
-        //     })
-        //     .catch((err) => {
-        //         console.error(err);
-        //         toast.error('Something went wrong!');
-        //     });
-    };
+    const handleClose = () => {
+        setShowModal(false);
+        refetch();
+    }
+
 
     return (
         <div className="container mx-auto p-5">
@@ -68,16 +49,15 @@ const Profile = () => {
                         onClick={handleSubscribe}
                         className="mt-6 bg-blue-600 text-white px-6 py-2 rounded-lg w-full hover:bg-blue-700"
                     >
-                        Subscribe - $10
+                        Subscribe - $50
                     </button>
                 )}
             </div>
 
             {/* Render Subscription Modal */}
             {showModal && (
-                <SubscriptionModal
-                    onClose={() => setShowModal(false)}
-                    onSuccess={handleSubscriptionSuccess}
+                <PaymentModal
+                    onClose={handleClose}
                 />
             )}
         </div>

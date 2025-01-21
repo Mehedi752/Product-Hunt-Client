@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { WithContext as ReactTags } from 'react-tag-input';
 import { useNavigate } from 'react-router-dom';

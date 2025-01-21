@@ -8,7 +8,6 @@ import Login from "../auth/Login";
 import ErrorPage from "../pages/error/ErrorPage";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Users from "../pages/dashboard/adminPanel/Users";
-import User from "../pages/dashboard/userPanel/user";
 import PrivateRoute from "../provider/PrivateRoute";
 import Admin from "../pages/dashboard/adminPanel/Admin";
 import Moderator from "../pages/dashboard/moderatorPanel/Moderator";
@@ -22,6 +21,8 @@ import ProductDetails from "../components/ProductDetails";
 import ReportedContents from "../pages/dashboard/moderatorPanel/ReportedContents";
 import Statistics from "../pages/dashboard/adminPanel/Statistics";
 import Coupons from "../pages/dashboard/adminPanel/Coupons";
+import CheckoutForm from "../pages/dashboard/userPanel/CheckOutForm";
+import User from "../pages/dashboard/userPanel/User";
 
 
 
@@ -90,7 +91,7 @@ const router = createBrowserRouter([
                     //Normal User Routes.
                     {
                         path: "/dashboard/user",
-                        element: <PrivateRoute><User /></PrivateRoute>,  // Protect User route with PrivateRoute
+                        element: <PrivateRoute><User></User></PrivateRoute>,  // Protect User route with PrivateRoute
                     },
                     {
                         path: '/dashboard/user/profile',
