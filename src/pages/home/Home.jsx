@@ -1,7 +1,8 @@
-import React from 'react';
+
 import Banner from './Banner';
 import FeaturedProducts from './FeaturedProducts';
 import TrendingProducts from './TrendingProduct';
+import CouponCarousel from './CouponCarousel';
 
 const Home = () => {
     return (
@@ -9,6 +10,7 @@ const Home = () => {
             <Banner></Banner>
             <FeaturedProducts></FeaturedProducts>
             <TrendingProducts></TrendingProducts>
+            <CouponCarousel></CouponCarousel>
 
         </div>
     );
