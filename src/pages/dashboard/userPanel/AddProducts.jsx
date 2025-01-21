@@ -5,14 +5,24 @@ import { useNavigate } from 'react-router-dom';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import { useQuery } from '@tanstack/react-query';
 
 
 
 const AddProduct = () => {
     const { user } = useAuth();
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
+
+    const { data: currentUser = [], refetch } = useQuery({
+        queryKey: ['currentUser', user?.email],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/users/${user?.email}`);
+            return res.data;
+        },
+    });
+    console.log(currentUser);
 
     const [tags, setTags] = useState([]);
 
@@ -34,6 +44,18 @@ const AddProduct = () => {
 
 
     const onSubmit = (data) => {
+        if (currentUser?.isSubscribed === false && currentUser?.productAddCount >= 1) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Subscription Required',
+                text: 'Please subscribe to add more products',
+                showConfirmButton: false,
+                timer: 2000
+            });
+            navigate('/dashboard/user/profile');
+            return;
+        }
+
         const productData = {
             ...data,
             ownerName: user?.displayName || 'Anonymous',
@@ -58,7 +80,16 @@ const AddProduct = () => {
                         timer: 2000
                     });
                 }
-                navigate('/dashboard/user/myProducts');
+                refetch();
+                axiosPublic.patch(`/users/countProductAdd/${user?.email}`)
+                    .then((res) => {
+                        console.log(res);
+                        refetch();
+                        navigate('/dashboard/user/myProducts');
+                    })
+                    .catch((error) => {
+                        console.error('Error updating product count:', error);
+                    });
             })
             .catch(error => console.error(error));
 
