@@ -132,7 +132,7 @@ const AcceptedProducts = () => {
                                         <button
                                             onClick={() => handleUpvote(product._id)}
                                             disabled={user?.email === product.ownerEmail}
-                                            className={`mt-4 btn btn-primary py-2 px-4 rounded-xl text-white font-semibold transition-all duration-300`}
+                                            className={`btn btn-primary py-2 px-4 rounded-xl text-white font-semibold transition-all duration-300`}
                                         >
                                             <FaArrowUp className="inline-block mr-2 text-lg" />
                                             Upvote ({product.upvotes})

@@ -3,9 +3,9 @@ import { FiBarChart2, FiUsers, FiGift } from 'react-icons/fi';
 
 const Admin = () => {
     return (
-        <div className="flex h-screen bg-gray-100">
+        <div className="flex flex-col lg:flex-row bg-gray-100">
             {/* Sidebar */}
-            <aside className="w-64 bg-white shadow-lg">
+            <aside className="w-full lg:w-64 bg-white shadow-lg">
                 <div className="p-6">
                     <h1 className="text-2xl font-bold text-blue-600">Admin Dashboard</h1>
                 </div>
@@ -15,8 +15,7 @@ const Admin = () => {
                             <NavLink
                                 to="/dashboard/admin/statistics"
                                 className={({ isActive }) =>
-                                    `flex items-center px-4 py-3 text-gray-700 ${
-                                        isActive ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-200'
+                                    `flex items-center px-4 py-3 text-gray-700 ${isActive ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-200'
                                     } rounded-lg`
                                 }
                             >
@@ -28,8 +27,7 @@ const Admin = () => {
                             <NavLink
                                 to="/dashboard/admin/users"
                                 className={({ isActive }) =>
-                                    `flex items-center px-4 py-3 text-gray-700 ${
-                                        isActive ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-200'
+                                    `flex items-center px-4 py-3 text-gray-700 ${isActive ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-200'
                                     } rounded-lg`
                                 }
                             >
@@ -41,8 +39,7 @@ const Admin = () => {
                             <NavLink
                                 to="/dashboard/admin/coupons"
                                 className={({ isActive }) =>
-                                    `flex items-center px-4 py-3 text-gray-700 ${
-                                        isActive ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-200'
+                                    `flex items-center px-4 py-3 text-gray-700 ${isActive ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-200'
                                     } rounded-lg`
                                 }
                             >
@@ -55,7 +52,7 @@ const Admin = () => {
             </aside>
 
             {/* Main Content */}
-            <main className="flex-1 p-8">
+            <main className="lg:flex-1 px-8 lg:p-12">
                 <div className="mt-6">
                     <Outlet />
                 </div>

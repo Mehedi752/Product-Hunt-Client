@@ -36,7 +36,7 @@ const Dashboard = () => {
 
     return (
         <div className="container mx-auto p-5">
-            <h1 className="text-3xl text-center font-bold">Welcome, {user?.displayName || 'User'}</h1>
+            <h1 className="text-2xl lg:text-3xl text-center font-bold">Welcome, {user?.displayName || 'User'}</h1>
             <p className="mt-2 text-center text-xl opacity-70 mb-6">Role: {currentUser?.role || 'User'}</p>
 
             {currentUser?.role === 'admin' && (

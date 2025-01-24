@@ -2,13 +2,17 @@ import { useNavigate } from 'react-router-dom';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useProducts from '../../../hooks/useProducts';
 import Swal from 'sweetalert2';
+import useAuth from '../../../hooks/useAuth';
 
 const MyProducts = () => {
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
+    const { user } = useAuth();
 
     const [products, refetch] = useProducts();
     // console.log(products);
+
+    const myProducts = products.filter((product) => product.ownerEmail === user.email);
 
     // Handle delete post
     const handleDelete = (id) => {
@@ -43,13 +47,13 @@ const MyProducts = () => {
     };
 
     return (
-        <div className="container mx-auto p-6">
+        <div className="container mx-auto lg:p-6">
             <h1 className="text-2xl font-bold text-center mb-6">My Posts</h1>
             <div className="overflow-x-auto shadow-md rounded-lg">
                 <table className="table-auto space-y-4 w-full text-left bg-white border border-gray-200">
                     <thead className="bg-gray-100 text-gray-600 uppercase text-sm">
                         <tr>
-                            <th className="px-4 py-2">#</th>
+                            <th className="px-4 py-2 hidden md:block">#</th>
                             <th className="px-4 py-2">Product Name</th>
                             <th className="px-4 py-2">Votes</th>
                             <th className="px-4 py-2">Status</th>
@@ -57,10 +61,10 @@ const MyProducts = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {products.length > 0 ? (
-                            products.map((product, index) => (
+                        {myProducts.length > 0 ? (
+                            myProducts.map((product, index) => (
                                 <tr key={product._id} className="hover:bg-gray-50 border-b">
-                                    <td className="px-4 py-4">{index + 1}</td>
+                                    <td className="px-4 py-4 hidden md:block">{index + 1}</td>
                                     <td className="px-4 py-4">{product.name}</td>
                                     <td className="px-4 py-4">{product.upvotes || 0}</td>
                                     <td

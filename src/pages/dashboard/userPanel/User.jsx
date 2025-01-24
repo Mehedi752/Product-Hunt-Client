@@ -4,9 +4,9 @@ import { FiUser, FiPlus, FiList } from "react-icons/fi";
 
 const User= () => {
     return (
-        <div className="flex h-screen bg-gray-100">
+        <div className="flex flex-col lg:flex-row bg-gray-100">
             {/* Sidebar */}
-            <div className="w-64 bg-white shadow-lg">
+            <div className="w-full lg:w-64 bg-white shadow-lg">
                 <div className="p-6">
                     <h1 className="text-2xl font-bold text-blue-600">User Dashboard</h1>
                 </div>

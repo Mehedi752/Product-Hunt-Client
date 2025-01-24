@@ -119,7 +119,7 @@ const Coupons = () => {
     };
 
     return (
-        <div className="container mx-auto px-8">
+        <div className="container mx-auto lg:px-12">
             <h1 className="text-3xl text-center font-semibold mb-6">{isEditing ? 'Edit Coupon' : 'Add Coupon'}</h1>
 
             <form onSubmit={handleSubmit(onSubmit)} className="mb-8">
@@ -162,7 +162,7 @@ const Coupons = () => {
             </form>
 
             <h2 className="text-2xl font-semibold mb-4">Existing Coupons</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
                 {coupons.map((coupon) => (
                     <div key={coupon._id} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105">
                         <div className="flex items-center justify-between mb-4">

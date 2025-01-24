@@ -32,7 +32,7 @@ const CouponCarousel = () => {
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
         Trending Coupons
       </h2>
-      <div className="max-w-4xl mx-auto px-[100px]">
+      <div className="max-w-4xl mx-auto px-6 lg:px-[100px]">
         {coupons.length > 0 ? (
           <Slider {...settings}>
             {coupons.map((coupon) => (
@@ -40,7 +40,7 @@ const CouponCarousel = () => {
                 key={coupon._id}
                 className="px-10 py-[60px] bg-white rounded-lg shadow-lg flex flex-col items-center text-center"
               >
-                <div className="bg-yellow-400 w-[300px] mx-auto text-black px-4 py-2 rounded-full text-lg font-bold mb-6">
+                <div className="bg-yellow-400 lg:w-[300px] mx-auto text-black px-4 py-2 rounded-full text-lg font-bold mb-6">
                   {coupon.code}
                 </div>
                 <p className="text-gray-700 text-lg font-medium mb-4">

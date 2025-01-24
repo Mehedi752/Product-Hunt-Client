@@ -107,7 +107,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: '/dashboard/user/updateProduct/:id',
-                        loader: ({ params }) => fetch(`http://localhost:5000/products/id/${params.id}`),
+                        loader: ({ params }) => fetch(`https://b10a12-server-side-mehedi752.vercel.app/products/id/${params.id}`),
                         element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>
                     },
 

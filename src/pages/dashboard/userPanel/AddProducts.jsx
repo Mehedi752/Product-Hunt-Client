@@ -96,9 +96,9 @@ const AddProduct = () => {
     };
 
     return (
-        <div className="container mx-auto p-6">
+        <div className="container mx-auto lg:p-6">
             <h1 className="text-2xl font-bold text-center mb-6">Add Product</h1>
-            <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md p-6  rounded-lg max-w-lg mx-auto">
+            <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md p-6 rounded-lg max-w-lg mx-auto">
                 {/* Product Name */}
                 <div className="mb-4">
                     <label htmlFor="name" className="block font-medium mb-1">Product Name</label>

@@ -72,7 +72,7 @@ const Users = () => {
                 <table className="w-full table-auto bg-white shadow-md rounded-lg">
                     <thead className="bg-blue-600 text-white">
                         <tr>
-                            <th className="px-4 py-2">#</th>
+                            <th className="px-4 py-2 hidden md:block">#</th>
                             <th className="px-4 py-2 text-left">Name</th>
                             <th className="px-4 py-2 text-left hidden lg:block">Email</th>
                             <th className="px-4 py-2 text-center">Role</th>
@@ -89,7 +89,7 @@ const Users = () => {
                                     } hover:bg-gray-200`}
                             >
 
-                                <td className="px-4 py-2">
+                                <td className="px-4 py-2 hidden md:block">
                                     {index + 1}
                                 </td>
 
