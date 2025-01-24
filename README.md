@@ -52,10 +52,10 @@ Welcome to **ProductHunt**, the ultimate platform for discovering and sharing th
   - Node.js
   - Express.js
   - MongoDB
-  - JWT for Authentication
+  - Firebase & JWT for Authentication
 
 - **Additional Tools**:
-  - React Toastify for notifications
+  - Sweet Alert for notifications
   - Chart.js for data visualization (admin statistics)
 
 ---
