@@ -22,6 +22,7 @@ import Coupons from '../pages/dashboard/adminPanel/Coupons'
 import CheckoutForm from '../pages/dashboard/userPanel/CheckOutForm'
 import User from '../pages/dashboard/userPanel/User'
 import About from '../pages/about/About'
+import Community from '../pages/community/Community'
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <About></About>
+      },
+      {
+        path: '/community',
+        element: <Community></Community>
       },
       {
         path: '/productDetails/:id',

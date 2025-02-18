@@ -64,7 +64,7 @@ const Register = () => {
     };
 
     return (
-        <div className="bg-base-200">
+        <div className="bg-base-200 pt-24">
             <div className="container mx-auto py-[72px] px-6 lg:px-[450px] ">
                 <div className="p-12 bg-white rounded shadow-lg">
                     <h1 className="text-2xl font-bold text-center">Register</h1>

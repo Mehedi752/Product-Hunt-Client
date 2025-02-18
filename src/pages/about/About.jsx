@@ -1,10 +1,10 @@
 const About = () => {
   return (
-    <div className='mt-24 container mx-auto'>
+    <div className='mt-24 container mx-auto mb-2'>
         <section className="bg-gray-100 text-black py-16 px-6 md:px-12 lg:px-20">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-red-500 mb-6">
-          About Us
+          About <span className="text-green-500">Product Hunt</span>
         </h2>
         <p className="text-lg text-gray-700 mb-8">
           Discover, explore, and share the latest innovations in tech! 🚀 Our platform connects 
