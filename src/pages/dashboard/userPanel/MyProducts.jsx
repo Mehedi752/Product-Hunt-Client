@@ -83,7 +83,7 @@ const MyProducts = () => {
                                         </button>
                                         <button
                                             onClick={() => handleDelete(product._id)}
-                                            className="btn btn-sm btn-error bg-red-600 text-white"
+                                            className="btn btn-sm bg-red-500 text-white"
                                         >
                                             Delete
                                         </button>

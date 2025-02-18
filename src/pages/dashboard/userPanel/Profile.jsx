@@ -47,7 +47,7 @@ const Profile = () => {
                 ) : (
                     <button
                         onClick={handleSubscribe}
-                        className="mt-6 bg-blue-600 text-white px-6 py-2 rounded-lg w-full hover:bg-blue-700"
+                        className="mt-6 btn btn-primary text-white px-6 py-2 rounded-lg w-full "
                     >
                         Subscribe - $50
                     </button>

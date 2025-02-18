@@ -101,7 +101,7 @@ const TrendingProducts = () => {
             {/* Show All Button */}
             <div className="mt-12 text-center">
                 <Link to="/products">
-                    <button className="bg-green-500 text-white py-3 px-12 rounded-full text-lg hover:bg-green-600 transition-colors duration-300">
+                    <button className="btn btn-primary text-white py-2 px-12 rounded-full text-lg  transition-colors duration-300">
                         Show All Products
                     </button>
                 </Link>

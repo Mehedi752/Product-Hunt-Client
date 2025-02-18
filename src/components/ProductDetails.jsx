@@ -152,7 +152,7 @@ const ProductDetails = () => {
                     </button>
                     <button
                         onClick={handleReport}
-                        className="btn btn-danger text-white px-5 py-2 rounded-lg shadow-lg bg-red-700"
+                        className="btn btn-danger text-white px-5 py-2 rounded-lg shadow-lg bg-red-500"
                     >
                         Report
                     </button>
@@ -234,7 +234,7 @@ const ProductDetails = () => {
                     />
                     <button
                         type="submit"
-                        className="btn bg-green-500 text-white px-5 py-2 rounded-lg shadow-lg hover:bg-green-600"
+                        className="btn btn-primary text-white px-5 py-2 rounded-lg shadow-lg "
                     >
                         Submit Review
                     </button>

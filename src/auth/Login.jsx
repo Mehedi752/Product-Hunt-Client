@@ -106,15 +106,15 @@ const Login = () => {
 
                         </div>
 
-                        <button type="submit" className="btn text-white bg-gradient-to-r from-blue-600 to-indigo-600 w-full">
+                        <button type="submit" className="btn text-white btn-primary w-full">
                             Login
                         </button>
                     </form>
 
                     <div className="divider">OR</div>
-                    <button onClick={handleGoogleSignIn} className="btn btn-outline w-full flex items-center"
+                    <button onClick={handleGoogleSignIn} className="btn btn-primary btn-outline w-full flex items-center"
                     >
-                        <FaGoogle className="text-blue-700"></FaGoogle>
+                        <FaGoogle className=""></FaGoogle>
                         Sign in with Google
                     </button>
                     <p className="text-sm text-center">

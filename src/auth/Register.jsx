@@ -140,7 +140,7 @@ const Register = () => {
                             </p>
                         }
 
-                        <button type="submit" className="btn bg-gradient-to-r from-blue-600 to-indigo-600 text-white w-full mb-4">
+                        <button type="submit" className="btn btn-primary text-white w-full mb-4">
                             Register
                         </button>
                     </form>

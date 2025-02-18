@@ -68,7 +68,7 @@ const PaymentModal = ({ onClose }) => {
                         />
                         <button
                             type="submit"
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 mb-2 rounded-md font-medium transition duration-300"
+                            className="w-full btn bg-blue-600 hover:bg-blue-700 text-white py-3 mb-2 rounded-md font-medium transition duration-300"
                         >
                             Apply Coupon
                         </button>
@@ -83,7 +83,7 @@ const PaymentModal = ({ onClose }) => {
                     )}
                     <CheckoutForm amount={couponPrice || price} />
                     <button
-                        className="w-full mt-4 bg-red-600 hover:bg-red-700 text-white py-3 rounded-md font-medium transition duration-300"
+                        className="w-full mt-4 btn bg-red-500 hover:bg-red-600 text-white py-3 rounded-md font-medium transition duration-300"
                         onClick={onClose}
                     >
                         Cancel

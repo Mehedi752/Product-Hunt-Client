@@ -88,7 +88,7 @@ const ProductReviewQueue = () => {
                                             onClick={() =>
                                                 navigate(`/productDetails/${product._id}`)
                                             }
-                                            className="px-4 py-2 bg-pink-600 text-white text-sm font-medium rounded-md hover:bg-pink-700 transition"
+                                            className="px-4 py-2 btn btn-primary text-white text-sm font-medium rounded-md  transition"
                                         >
                                             View Details
                                         </button>
@@ -96,7 +96,7 @@ const ProductReviewQueue = () => {
                                             onClick={() => makeFeatured(product)}
                                             className={`px-4 py-2 text-sm font-medium rounded-md ${product.featured
                                                 ? 'bg-green-300 text-white cursor-not-allowed'
-                                                : 'bg-green-600 text-white hover:bg-green-700'
+                                                : 'btn bg-green-600 text-white hover:bg-green-700'
                                                 } transition`}
                                             disabled={product.featured}
                                         >
@@ -106,7 +106,7 @@ const ProductReviewQueue = () => {
                                             onClick={() => updateStatus(product._id, 'accepted')}
                                             className={`px-4 py-2 text-sm font-medium rounded-md ${product.status === 'accepted'
                                                 ? 'bg-gray-300 text-white cursor-not-allowed'
-                                                : 'bg-blue-600 text-white hover:bg-blue-700'
+                                                : 'btn btn-primary text-white'
                                                 } transition`}
                                             disabled={product.status === 'accepted'}
                                         >
@@ -118,7 +118,7 @@ const ProductReviewQueue = () => {
                                             onClick={() => updateStatus(product._id, 'rejected')}
                                             className={`px-4 py-2 text-sm font-medium rounded-md ${product.status === 'rejected'
                                                 ? 'bg-gray-300 text-white cursor-not-allowed'
-                                                : 'bg-red-600 text-white hover:bg-red-700'
+                                                : 'btn bg-red-500 text-white hover:bg-red-600'
                                                 } transition`}
                                             disabled={product.status === 'rejected'}
                                         >

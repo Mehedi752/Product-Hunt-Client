@@ -117,7 +117,7 @@ const Users = () => {
                                 <td className="lg:px-4 py-2 text-center flex flex-col lg:flex-row items-center gap-2">
                                     <button
                                         onClick={() => handleMakeModerator(user)}
-                                        className="btn btn-sm btn-info"
+                                        className="btn btn-sm btn-primary"
                                         disabled={user.role === 'moderator'}
                                     >
                                         <FiUserCheck className="lg:inline-block mr-1 hidden" />
@@ -125,7 +125,7 @@ const Users = () => {
                                     </button>
                                     <button
                                         onClick={() => handleMakeAdmin(user)}
-                                        className="btn btn-sm btn-primary"
+                                        className="btn btn-sm bg-red-500 text-white"
                                         disabled={user.role === 'admin'}
                                     >
                                         <FiShield className="lg:inline-block mr-1 hidden " />
