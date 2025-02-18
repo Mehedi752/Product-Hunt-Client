@@ -6,6 +6,7 @@ import CouponCarousel from './CouponCarousel';
 import WhyChooseUs from './WhyChooseUs';
 import Testimonials from './Testimonials';
 import FAQ from './FAQ';
+import Newsletter from './Newsletter';
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <WhyChooseUs></WhyChooseUs>
             <Testimonials></Testimonials>
             <FAQ></FAQ>
+            <Newsletter></Newsletter>
         </div>
     );
 };
