@@ -35,7 +35,7 @@ const Dashboard = () => {
 
 
     return (
-        <div className="container mx-auto px-5 py-12">
+        <div className="container mx-auto px-5 my-20 mt-[150px]">
             <h1 className="text-2xl lg:text-3xl text-center font-bold">Welcome, {user?.displayName || 'User'}</h1>
             <p className="mt-2 text-center text-xl opacity-70 mb-6">Role: {currentUser?.role || 'User'}</p>
 

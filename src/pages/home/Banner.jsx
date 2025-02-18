@@ -7,7 +7,7 @@ const Banner = () => {
     return (
         <div className="">
 
-            <div className="container mx-auto px-5 lg:px-0 w-full py-8 lg:py-12 helvetica-font">
+            <div className="container mx-auto px-5 lg:px-0 w-full py-8 lg:py-12 mt-24 helvetica-font">
 
                 <div className='mb-12'>
                     <h1 className='text-3xl md:text-5xl lg:text-5xl font-bold px-5'>
