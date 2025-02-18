@@ -51,7 +51,7 @@ const TrendingProducts = () => {
     };
 
     return (
-        <div className="container mx-auto px-4 py-16">
+        <div className="container mx-auto px-4 py-12">
             <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">Trending Products</h2>
 
             {/* Product Cards */}

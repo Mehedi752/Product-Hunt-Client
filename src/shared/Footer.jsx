@@ -6,7 +6,7 @@ import { FaFacebookF, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
 const Footer = () => {
     return (
         <div>
-            <footer className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-10">
+            <footer className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-12">
                 <div className="container mx-auto px-6 lg:px-0 flex flex-col lg:flex-row gap-6 lg:justify-between">
                     {/* Logo and Description */}
                     <div className='lg:w-1/3'>
@@ -25,11 +25,11 @@ const Footer = () => {
                         <ul className="space-y-2">
                             <li className="flex items-center space-x-2">
                                 <IoLocationOutline className="text-xl" />
-                                <span>123 Main Street, City, Country</span>
+                                <span>123 Jashore, Khulna, Bangladesh</span>
                             </li>
                             <li className="flex items-center space-x-2">
                                 <HiOutlinePhone className="text-xl" />
-                                <span>+123 456 7890</span>
+                                <span>+880 160 953 1117</span>
                             </li>
                             <li className="flex items-center space-x-2">
                                 <HiOutlineMail className="text-xl" />

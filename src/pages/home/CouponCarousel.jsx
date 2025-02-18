@@ -28,7 +28,7 @@ const CouponCarousel = () => {
   };
 
   return (
-    <div className="py-12 bg-gray-100 container mx-auto px-6 lg:px-0 mb-10">
+    <div className="py-12 bg-gray-100 container mx-auto px-6 lg:px-0 mt-12 mb-[96px]">
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
         Trending Coupons
       </h2>

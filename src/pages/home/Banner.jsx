@@ -26,7 +26,7 @@ const Banner = () => {
                     </h1>
                 </div>
 
-                <div className="w-full lg:h-[1000px] mb-12 relative">
+                <div className="w-full lg:h-[1000px] relative">
 
                     <div className="relative w-full h-full rounded-lg overflow-hidden">
 
