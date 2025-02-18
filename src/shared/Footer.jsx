@@ -6,7 +6,7 @@ import { FaFacebookF, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
 const Footer = () => {
     return (
         <div>
-            <footer className="bg-gray-900 text-white py-10">
+            <footer className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-10">
                 <div className="container mx-auto px-6 lg:px-0 flex flex-col lg:flex-row gap-6 lg:justify-between">
                     {/* Logo and Description */}
                     <div className='lg:w-1/3'>
@@ -14,7 +14,7 @@ const Footer = () => {
                             <img src={logoImg} alt="Logo" className="w-10 h-10" />
                             <h2 className="text-2xl font-semibold">Product Hunt</h2>
                         </div>
-                        <p className="text-gray-400">
+                        <p className="">
                             Product Hunt is a hub for all the latest products and trends. We are dedicated to providing quality service and the best user experience.
                         </p>
                     </div>
@@ -22,7 +22,7 @@ const Footer = () => {
                     {/* Contact Information */}
                     <div className='lg:w-1/3'>
                         <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-                        <ul className="text-gray-400 space-y-2">
+                        <ul className="space-y-2">
                             <li className="flex items-center space-x-2">
                                 <IoLocationOutline className="text-xl" />
                                 <span>123 Main Street, City, Country</span>
@@ -43,51 +43,51 @@ const Footer = () => {
                         <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
                         <div className="flex flex-col space-y-4">
 
-                            <div
+                            <a
                                 href="https://facebook.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-400 hover:text-blue-500 transition flex items-center gap-2"
+                                className=" hover:text-blue-500 transition flex items-center gap-2"
                             >
                                 <FaFacebookF className="text-2xl" />
                                 <h3 className="">Facebook</h3>
-                            </div>
+                            </a>
 
-                            <div
+                            <a
                                 href="https://twitter.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-400 hover:text-blue-400 transition flex items-center gap-2"
+                                className=" hover:text-blue-400 transition flex items-center gap-2"
                             >
                                 <FaTwitter className="text-2xl" />
                                 <h3 className="">Twitter</h3>
-                            </div>
+                            </a>
 
-                            <div
+                            <a
                                 href="https://instagram.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-400 hover:text-pink-500 transition flex items-center gap-2"
+                                className=" hover:text-pink-500 transition flex items-center gap-2"
                             >
                                 <FaInstagram className="text-2xl" />
                                 <h3 className="">Instagram</h3>
-                            </div>
+                            </a>
 
-                            <div
+                            <a
                                 href="https://linkedin.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-400 hover:text-blue-700 transition flex items-center gap-2"
+                                className=" hover:text-blue-700 transition flex items-center gap-2"
                             >
                                 <FaLinkedin className="text-2xl" />
                                 <h3 className="">Linkedin</h3>
-                            </div>
+                            </a>
 
                         </div>
                     </div>
 
                 </div>
-                <div className="mt-8 text-center text-gray-500 text-sm">
+                <div className="mt-8 text-center text-sm">
                     &copy; {new Date().getFullYear()} ProductHunt. All rights reserved.
                 </div>
             </footer>
