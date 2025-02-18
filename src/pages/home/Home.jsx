@@ -3,6 +3,9 @@ import Banner from './Banner';
 import FeaturedProducts from './FeaturedProducts';
 import TrendingProducts from './TrendingProduct';
 import CouponCarousel from './CouponCarousel';
+import WhyChooseUs from './WhyChooseUs';
+import Testimonials from './Testimonials';
+import FAQ from './FAQ';
 
 const Home = () => {
     return (
@@ -11,6 +14,9 @@ const Home = () => {
             <FeaturedProducts></FeaturedProducts>
             <TrendingProducts></TrendingProducts>
             <CouponCarousel></CouponCarousel>
+            <WhyChooseUs></WhyChooseUs>
+            <Testimonials></Testimonials>
+            <FAQ></FAQ>
         </div>
     );
 };
