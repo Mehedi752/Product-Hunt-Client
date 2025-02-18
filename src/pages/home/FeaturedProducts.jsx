@@ -48,7 +48,8 @@ const FeaturedProducts = () => {
 
     return (
         <div className="container mx-auto px-6 my-12">
-            <h2 className="text-4xl font-extrabold mb-8 text-gray-800 text-center">Featured Products</h2>
+            <h2 className="text-4xl font-extrabold mb-8 text-red-500 text-center">
+                <span className="text-black">Featured Products</span> Section🔎</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 {featuredProducts.map((product) => (
                     <div

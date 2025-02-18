@@ -25,8 +25,8 @@ const Testimonials = () => {
   return (
     <section className='bg-white text-black pb-24 px-6 md:px-12'>
       <div className='max-w-5xl mx-auto text-center'>
-        <h2 className='text-4xl font-bold text-green-600 mb-6'>
-          What Our Users Say ❤️
+        <h2 className='text-4xl font-bold text-red-500 mb-6'>
+          <span className="text-black">What Our Users</span> Say❤️
         </h2>
         <p className='text-lg text-gray-700 mb-8'>
           Hear from **tech enthusiasts & creators** who love our platform.

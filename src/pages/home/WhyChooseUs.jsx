@@ -9,7 +9,7 @@ const WhyChooseUs = () => {
     return (
       <section className="bg-white text-black pb-24 px-6 md:px-12">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-blue-600 mb-6">Why Choose <span className="text-red-500">Us?</span></h2>
+          <h2 className="text-4xl font-bold  mb-6">Why Choose <span className="text-red-500">Us?</span></h2>
           <p className="text-lg text-gray-700 mb-8">
             We bring you the **most innovative tech products**, curated and upvoted by a passionate community.
           </p>
