@@ -1,6 +1,6 @@
  
 import { NavLink, Outlet } from "react-router-dom";
-import { FiUser, FiPlus, FiList } from "react-icons/fi";
+import { FiUser, FiPlus, FiList, FiBarChart2 } from "react-icons/fi";
 
 const User= () => {
     return (
@@ -24,6 +24,21 @@ const User= () => {
                                 My Profile
                             </NavLink>
                         </li>
+                        
+                        <li>
+                            <NavLink
+                                            to='/dashboard/user/overview'
+                                            className={({ isActive }) =>
+                                              `flex items-center px-4 py-3 text-gray-700 ${
+                                                isActive ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-200'
+                                              } rounded-lg`
+                                            }
+                                          >
+                                            <FiBarChart2 className='w-5 h-5 mr-3' />
+                                            Statistics
+                                          </NavLink>
+                        </li>
+
                         <li>
                             <NavLink
                                 to="/dashboard/user/addProduct"

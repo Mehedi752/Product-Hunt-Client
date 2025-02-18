@@ -23,6 +23,8 @@ import CheckoutForm from '../pages/dashboard/userPanel/CheckOutForm'
 import User from '../pages/dashboard/userPanel/User'
 import About from '../pages/about/About'
 import Community from '../pages/community/Community'
+import ProfilePage from '../pages/dashboard/adminPanel/ProfilePage'
+import Overview from '../pages/dashboard/userPanel/Overview'
 
 const router = createBrowserRouter([
   {
@@ -72,6 +74,14 @@ const router = createBrowserRouter([
             element: (
               <PrivateRoute>
                 <Admin />
+              </PrivateRoute>
+            )
+          },
+          {
+            path: '/dashboard/admin/profilePage',
+            element: (
+              <PrivateRoute>
+                <ProfilePage></ProfilePage>
               </PrivateRoute>
             )
           },
@@ -139,6 +149,14 @@ const router = createBrowserRouter([
             element: (
               <PrivateRoute>
                 <Profile></Profile>
+              </PrivateRoute>
+            )
+          },
+          {
+            path: '/dashboard/user/overview',
+            element: (
+              <PrivateRoute>
+                <Overview></Overview>
               </PrivateRoute>
             )
           },

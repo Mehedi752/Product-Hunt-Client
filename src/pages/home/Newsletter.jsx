@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import useAuth from '../../hooks/useAuth'
 
 const Newsletter = () => {
   const [email, setEmail] = useState('')
   const [isSubscribed, setIsSubscribed] = useState(false)
-  const {loading} = useAuth();
+
 
   const handleInputChange = e => {
     setEmail(e.target.value)
@@ -20,13 +19,6 @@ const Newsletter = () => {
     
   }
 
-  if (loading) {
-    return (
-      <div className='flex justify-center items-center'>
-        <span className='loading loading-spinner loading-lg text-info min-h-screen'></span>
-      </div>
-    )
-  }
 
   return (
     <div className='container mx-auto pt-12'>
