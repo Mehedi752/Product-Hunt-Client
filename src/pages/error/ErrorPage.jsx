@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const ErrorPage = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600">
+    <div className="flex items-center justify-center min-h-screen bg-blue-500">
       <div className="text-center">
         {/* 404 Number with Slide-in animation */}
         <h1 className="text-8xl font-extrabold text-white animate__animated animate__fadeInUp">

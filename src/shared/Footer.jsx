@@ -6,7 +6,7 @@ import { FaFacebookF, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
 const Footer = () => {
     return (
         <div>
-            <footer className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-12">
+            <footer className="bg-blue-500 text-white py-12">
                 <div className="container mx-auto px-6 lg:px-0 flex flex-col lg:flex-row gap-6 lg:justify-between">
                     {/* Logo and Description */}
                     <div className='lg:w-1/3'>
@@ -47,40 +47,40 @@ const Footer = () => {
                                 href="https://facebook.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className=" hover:text-blue-500 transition flex items-center gap-2"
+                                className=" transition flex items-center gap-2"
                             >
                                 <FaFacebookF className="text-2xl" />
-                                <h3 className="">Facebook</h3>
+                                <h3 className="text-white">Facebook</h3>
                             </a>
 
                             <a
                                 href="https://twitter.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className=" hover:text-blue-400 transition flex items-center gap-2"
+                                className=" transition flex items-center gap-2"
                             >
                                 <FaTwitter className="text-2xl" />
-                                <h3 className="">Twitter</h3>
+                                <h3 className="text-white">Twitter</h3>
                             </a>
 
                             <a
                                 href="https://instagram.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className=" hover:text-pink-500 transition flex items-center gap-2"
+                                className=" transition flex items-center gap-2"
                             >
                                 <FaInstagram className="text-2xl" />
-                                <h3 className="">Instagram</h3>
+                                <h3 className="text-white">Instagram</h3>
                             </a>
 
                             <a
                                 href="https://linkedin.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className=" hover:text-blue-700 transition flex items-center gap-2"
+                                className=" transition flex items-center gap-2"
                             >
                                 <FaLinkedin className="text-2xl" />
-                                <h3 className="">Linkedin</h3>
+                                <h3 className="text-white">Linkedin</h3>
                             </a>
 
                         </div>

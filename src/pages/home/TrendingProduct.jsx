@@ -77,7 +77,7 @@ const TrendingProducts = () => {
                             {/* Tags */}
                             <div className="text-xs text-gray-500">
                                 {product.tags.map((tag, idx) => (
-                                    <span key={idx} className="inline-block mr-2 mb-2 px-3 py-1 rounded-full bg-teal-100 text-teal-700">
+                                    <span key={idx} className="inline-block mr-2 mb-2 px-3 py-1 rounded-full bg-blue-100 text-blue-600">
                                         {tag}
                                     </span>
                                 ))}

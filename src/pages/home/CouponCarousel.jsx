@@ -40,7 +40,7 @@ const CouponCarousel = () => {
                 key={coupon._id}
                 className="px-10 py-[60px] bg-white rounded-lg shadow-lg flex flex-col items-center text-center"
               >
-                <div className="bg-yellow-400 lg:w-[300px] mx-auto text-black px-4 py-2 rounded-full text-lg font-bold mb-6">
+                <div className="bg-red-600 text-white lg:w-[300px] mx-auto px-4 py-2 rounded-full text-lg font-semibold mb-6">
                   {coupon.code}
                 </div>
                 <p className="text-gray-700 text-lg font-medium mb-4">

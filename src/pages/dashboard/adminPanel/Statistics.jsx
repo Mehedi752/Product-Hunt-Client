@@ -39,7 +39,7 @@ const Statistics = () => {
             {
                 label: 'Site Statistics',
                 data: [products.length, reviews.length, users.length],
-                backgroundColor: ['#4CAF50', '#FFEB3B', '#2196F3'], // Colors for each section
+                backgroundColor: ['#F44336 ', '#4CAF50', '#2196F3'], // Colors for each section
                 hoverOffset: 4,
             },
         ],

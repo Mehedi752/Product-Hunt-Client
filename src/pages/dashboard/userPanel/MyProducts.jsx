@@ -68,9 +68,8 @@ const MyProducts = () => {
                                     <td className="px-4 py-4">{product.name}</td>
                                     <td className="px-4 py-4">{product.upvotes || 0}</td>
                                     <td
-                                        className={`px-4 py-4 font-semibold ${product.status === 'Accepted' ? 'text-green-600' :
-                                            product.status === 'Rejected' ? 'text-red-600' : 'text-yellow-500'
-                                            }`}
+                                        className={`px-4 py-4 font-semibold ${product.status === 'accepted' ? 'text-green-500' : 
+                                            product.status === 'rejected' ? 'text-red-600' : 'text-gray-500'}`}
                                     >
                                         {product.status || 'Pending'}
                                     </td>
