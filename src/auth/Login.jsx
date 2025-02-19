@@ -73,7 +73,7 @@ const Login = () => {
                             <input
                                 type="email"
                                 {...register('email', { required: true })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full dark:bg-white dark:text-black"
                                 placeholder="Enter your email"
                                 required
                             />
@@ -87,7 +87,7 @@ const Login = () => {
                                     required: true, minLength: 6, maxLength: 20,
                                     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{6,20}$/
                                 })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full dark:bg-white dark:text-black"
                                 placeholder="Enter your password"
                                 required
                             />

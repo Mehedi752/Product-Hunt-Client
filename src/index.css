@@ -3,3 +3,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Light Mode (default) */
+body {
+    @apply bg-white text-black transition-all duration-300;
+  }
+  
+  /* Dark Mode */
+  .dark body {
+    @apply bg-gray-900 text-white;
+  }

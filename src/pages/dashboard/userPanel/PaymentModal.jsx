@@ -64,7 +64,7 @@ const PaymentModal = ({ onClose }) => {
                             type="text"
                             name="couponCode"
                             placeholder="Enter Coupon Code"
-                            className="w-full p-3 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            className="w-full p-3 dark:bg-white dark:text-black border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
                         />
                         <button
                             type="submit"

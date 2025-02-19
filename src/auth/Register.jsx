@@ -74,7 +74,7 @@ const Register = () => {
                             <input
                                 type="text"
                                 {...register("name", { required: true })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full dark:bg-white dark:text-black"
                                 placeholder="Enter your name"
                                 required
                             />
@@ -86,7 +86,7 @@ const Register = () => {
                             <input
                                 type="email"
                                 {...register("email", { required: true })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full dark:bg-white dark:text-black"
                                 placeholder="Enter your email"
                                 required
                             />
@@ -100,7 +100,7 @@ const Register = () => {
                             <input
                                 type="url"
                                 {...register("photoURL", { required: true })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full dark:bg-white dark:text-black"
                                 placeholder="Enter photo URL"
                             />
                             {errors.photoURL && <p className="text-red-600">Photo URL is required</p>}
@@ -114,7 +114,7 @@ const Register = () => {
                                     required: true, minLength: 6, maxLength: 20,
                                     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{6,20}$/
                                 })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full dark:bg-white dark:text-black"
                                 placeholder="Enter your password"
                                 required
                             />

@@ -127,7 +127,7 @@ const Coupons = () => {
                     <label className="block mb-2">Coupon Code</label>
                     <input
                         {...register('code', { required: true })}
-                        className="w-full p-2 border border-gray-300 rounded-md"
+                        className="w-full dark:bg-white dark:text-black p-2 border border-gray-300 rounded-md"
                     />
                 </div>
                 <div className="mb-4">
@@ -135,14 +135,14 @@ const Coupons = () => {
                     <input
                         {...register('expiryDate', { required: true })}
                         type="date"
-                        className="w-full p-2 border border-gray-300 rounded-md"
+                        className="w-full dark:bg-white dark:text-black p-2 border border-gray-300 rounded-md"
                     />
                 </div>
                 <div className="mb-4">
                     <label className="block mb-2">Coupon Description</label>
                     <input
                         {...register('description', { required: true })}
-                        className="w-full p-2 border border-gray-300 rounded-md"
+                        className="w-full dark:bg-white dark:text-black p-2 border border-gray-300 rounded-md"
                     />
                 </div>
                 <div className="mb-4">
@@ -150,7 +150,7 @@ const Coupons = () => {
                     <input
                         {...register('discountAmount', { required: true })}
                         type="number"
-                        className="w-full p-2 border border-gray-300 rounded-md"
+                        className="w-full dark:bg-white dark:text-black p-2 border border-gray-300 rounded-md"
                     />
                 </div>
                 <button

@@ -106,7 +106,7 @@ const AddProduct = () => {
                         type="text"
                         id="name"
                         {...register('name', { required: 'Product name is required' })}
-                        className={`input input-bordered w-full ${errors.name ? 'border-red-500' : ''}`}
+                        className={`input input-bordered w-full dark:bg-white dark:text-black ${errors.name ? 'border-red-500' : ''}`}
                     />
                     {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
                 </div>
@@ -118,7 +118,7 @@ const AddProduct = () => {
                         type="url"
                         id="image"
                         {...register('image', { required: 'Product image is required' })}
-                        className={`input input-bordered w-full ${errors.image ? 'border-red-500' : ''}`}
+                        className={`input input-bordered w-full dark:bg-white dark:text-black ${errors.image ? 'border-red-500' : ''}`}
                     />
                     {errors.image && <p className="text-red-500 text-sm">{errors.image.message}</p>}
                 </div>
@@ -129,7 +129,7 @@ const AddProduct = () => {
                     <textarea
                         id="description"
                         {...register('description', { required: 'Description is required' })}
-                        className={`textarea textarea-bordered w-full ${errors.description ? 'border-red-500' : ''}`}
+                        className={`textarea textarea-bordered w-full dark:bg-white dark:text-black ${errors.description ? 'border-red-500' : ''}`}
                         rows="4"
                     ></textarea>
                     {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>}
@@ -143,14 +143,14 @@ const AddProduct = () => {
                         id="ownerName"
                         value={user?.displayName || 'Anonymous'}
                         disabled
-                        className="input input-bordered w-full bg-gray-100"
+                        className="input input-bordered w-full dark:bg-white dark:text-black bg-gray-100"
                     />
                     <input
                         type="email"
                         id="ownerEmail"
                         value={user?.email}
                         disabled
-                        className="input input-bordered w-full bg-gray-100 mt-2"
+                        className="input input-bordered w-full  dark:bg-white dark:text-black bg-gray-100 mt-2"
                     />
 
                     <input
@@ -158,7 +158,7 @@ const AddProduct = () => {
                         id='ownerImage'
                         value={user?.photoURL || '/default-avatar.png'}
                         disabled
-                        className="input input-bordered w-full bg-gray-100 mt-2"
+                        className="input input-bordered w-full dark:bg-white dark:text-black bg-gray-100 mt-2"
                     />
 
                 </div>
@@ -174,7 +174,7 @@ const AddProduct = () => {
                         inputFieldPosition="bottom"
                         maxTags={7}
                         placeholder="Add new tag"
-                        className="border rounded p-2"
+                        className="border rounded p-2 dark:bg-white dark:text-black"
                     />
                 </div>
 
@@ -185,7 +185,7 @@ const AddProduct = () => {
                         type="url"
                         id="externalLink"
                         {...register('externalLink')}
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full dark:bg-white dark:text-black"
                     />
                 </div>
 

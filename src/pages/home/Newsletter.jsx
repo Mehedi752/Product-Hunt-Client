@@ -59,7 +59,7 @@ const Newsletter = () => {
                 value={email}
                 onChange={handleInputChange}
                 placeholder='Enter your email'
-                className='p-3 w-72 sm:w-96 rounded-l-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300'
+                className='p-3 w-72 sm:w-96 dark:bg-white dark:text-black rounded-l-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300'
                 required
               />
               <button
