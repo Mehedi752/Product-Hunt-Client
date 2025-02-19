@@ -45,6 +45,9 @@ const FeaturedProducts = () => {
         }
     };
 
+    const theme = localStorage.getItem('theme');
+    console.log(theme);
+
 
     return (
         <div className="container mx-auto px-6 my-12">

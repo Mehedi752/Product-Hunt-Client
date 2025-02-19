@@ -53,7 +53,7 @@ const TrendingProducts = () => {
     return (
         <div className="container mx-auto px-4 py-12">
             <h2 className="text-4xl font-bold text-center text-red-500 mb-12">
-                <span className='text-black'>Trending Products</span> Section🔥</h2>
+                <span className='text-black '>Trending Products</span> Section🔥</h2>
 
             {/* Product Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">

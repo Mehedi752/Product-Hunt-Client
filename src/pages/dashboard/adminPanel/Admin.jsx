@@ -70,7 +70,7 @@ const Admin = () => {
       </aside>
 
       {/* Main Content */}
-      <main className='lg:flex-1 px-8 lg:p-12'>
+      <main className='lg:flex-1 px-8 py-6 lg:p-12'>
         <div className='mt-6'>
           <Outlet />
         </div>

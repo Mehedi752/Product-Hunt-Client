@@ -20,7 +20,7 @@ const ProfilePage = () => {
 
   return (
     <div className="flex items-center justify-center bg-gray-100">
-      <div className="bg-white shadow-lg rounded-xl p-6 w-full max-w-md md:max-w-lg">
+      <div className="bg-white shadow-lg rounded-xl p-6 w-full max-w-md ">
         {/* Profile Picture */}
         <div className="flex flex-col items-center">
           {currentUser.photoURL ? (
